@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO giftCodes (code, purchaserId, durationMonths, status) VALUES ('NURGUARD1MONTH', 1, 1, 'available');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 36xyww9Pr8xVR2x.13271de965df --database MBWmLGu73CjUgRfnuvyNEC --execute INSERT INTO giftCodes (code, purchaserId, durationMonths, status) VALUES ('NURGUARD1MONTH', 1, 1, 'available');",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 'mbwmlgu73cjugrfnuvynec.giftCodes' doesn't exist"
+  ]
+}
