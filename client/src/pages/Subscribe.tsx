@@ -14,6 +14,7 @@ export default function Subscribe() {
   const { user, isAuthenticated } = useAuth();
   const search = useSearch();
   const [, setLocation] = useLocation();
+  const [email, setEmail] = useState("");
   
   const [affiliateCode, setAffiliateCode] = useState("");
   const [giftCode, setGiftCode] = useState("");
@@ -59,11 +60,14 @@ export default function Subscribe() {
   });
 
   const handleCheckout = () => {
-    if (!isAuthenticated) {
-      window.location.href = getLoginUrl();
+    if (!email && !isAuthenticated) {
+      toast.error("Please enter your email");
       return;
     }
-    checkoutMutation.mutate({ affiliateCode: affiliateCode || undefined });
+    checkoutMutation.mutate({ 
+      affiliateCode: affiliateCode || undefined,
+      email: email || user?.email || undefined
+    });
   };
 
   const handleRedeemGift = () => {
@@ -163,6 +167,21 @@ export default function Subscribe() {
               </ul>
 
               {/* Affiliate Code Input */}
+              {/* Email Input for Non-Authenticated Users */}
+              {!isAuthenticated && (
+                <div className="mb-4">
+                  <Label htmlFor="email" className="text-sm">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mt-1"
+                  />
+                </div>
+              )}
+
               <div className="mb-4">
                 <Label htmlFor="affiliate" className="text-sm">Referral Code (optional)</Label>
                 <Input
@@ -188,7 +207,7 @@ export default function Subscribe() {
                 {checkoutMutation.isPending ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
                 ) : null}
-                {isAuthenticated ? "Subscribe Now" : "Sign In & Subscribe"}
+                Proceed to Checkout
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
 

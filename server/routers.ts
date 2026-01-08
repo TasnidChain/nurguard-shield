@@ -24,9 +24,9 @@ const subscriptionRouter = router({
     };
   }),
   
-  // Get checkout URL for Lemon Squeezy
-  getCheckoutUrl: protectedProcedure
-    .input(z.object({ affiliateCode: z.string().optional() }))
+  // Get checkout URL for Lemon Squeezy (PUBLIC - no login required)
+  getCheckoutUrl: publicProcedure
+    .input(z.object({ affiliateCode: z.string().optional(), email: z.string().optional() }))
     .mutation(async ({ ctx, input }) => {
       const checkoutUrl = process.env.LEMON_SQUEEZY_CHECKOUT_URL;
       

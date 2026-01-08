@@ -37,6 +37,22 @@ export default function Settings() {
     }
   };
 
+  // Redirect if no active subscription
+  if (!subscription?.isActive && isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Shield className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+          <h1 className="text-2xl font-bold mb-2">Upgrade to Shield</h1>
+          <p className="text-muted-foreground mb-6">Subscribe to access settings</p>
+          <Link href="/subscribe">
+            <Button>Subscribe Now</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center">

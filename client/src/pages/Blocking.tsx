@@ -12,7 +12,25 @@ import { Link } from "wouter";
 import { toast } from "sonner";
 
 export default function Blocking() {
-  useAuth({ redirectOnUnauthenticated: true });
+  const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
+  const { data: subscription } = trpc.subscription.getStatus.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+  
+  if (!subscription?.isActive) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Shield className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+          <h1 className="text-2xl font-bold mb-2">Upgrade to Shield</h1>
+          <p className="text-muted-foreground mb-6">Subscribe to manage blocking rules</p>
+          <Link href="/subscribe">
+            <Button>Subscribe Now</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
   
   const [newRule, setNewRule] = useState({ type: "website" as "website" | "app" | "keyword" | "category", value: "", limit: "" });
   

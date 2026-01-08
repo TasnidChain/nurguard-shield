@@ -2,12 +2,30 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Users, DollarSign, Copy, ArrowLeft, Trophy, Loader2 } from "lucide-react";
+import { Users, DollarSign, Copy, ArrowLeft, Trophy, Loader2, Shield } from "lucide-react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 
 export default function Affiliate() {
-  useAuth({ redirectOnUnauthenticated: true });
+  const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
+  const { data: subscription } = trpc.subscription.getStatus.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+  
+  if (!subscription?.isActive) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Shield className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+          <h1 className="text-2xl font-bold mb-2">Upgrade to Shield</h1>
+          <p className="text-muted-foreground mb-6">Subscribe to access affiliate program</p>
+          <Link href="/subscribe">
+            <Button>Subscribe Now</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
   
   const { data: stats, isLoading } = trpc.affiliate.getStats.useQuery();
   const { data: leaderboard } = trpc.affiliate.getLeaderboard.useQuery();
