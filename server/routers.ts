@@ -6,6 +6,8 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import * as db from "./db";
 import { nanoid } from "nanoid";
+import { onboardingRouter } from "./onboardingRouter";
+import { complianceRouter } from "./complianceRouter";
 
 // ============================================================================
 // SUBSCRIPTION ROUTER
@@ -328,6 +330,8 @@ export const appRouter = router({
   analytics: analyticsRouter,
   affiliate: affiliateRouter,
   gift: giftRouter,
+  onboarding: onboardingRouter,
+  compliance: complianceRouter,
   foundation: foundationRouter,
 });
 

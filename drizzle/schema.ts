@@ -1,7 +1,7 @@
 import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal, boolean, json } from "drizzle-orm/mysql-core";
 
 // ============================================================================
-// USERS TABLE - Extended with subscription and affiliate fields
+// USERS TABLE - Extended with subscription, affiliate, and onboarding fields
 // ============================================================================
 export const users = mysqlTable("users", {
   id: int("id").autoincrement().primaryKey(),
@@ -22,6 +22,17 @@ export const users = mysqlTable("users", {
   referredBy: varchar("referredBy", { length: 32 }),
   affiliateEarnings: decimal("affiliateEarnings", { precision: 10, scale: 2 }).default("0.00"),
   availableBalance: decimal("availableBalance", { precision: 10, scale: 2 }).default("0.00"),
+  
+  // Onboarding state
+  hasCompletedOnboarding: int("hasCompletedOnboarding").default(0).notNull(),
+  protectionIntent: text("protectionIntent"), // JSON array: ["social_media", "adult_content", etc]
+  
+  // Compliance & Streak tracking
+  streakDays: int("streakDays").default(0).notNull(),
+  streakStartedAt: timestamp("streakStartedAt"),
+  complianceScore: int("complianceScore").default(100).notNull(),
+  lastViolationAt: timestamp("lastViolationAt"),
+  totalBlockedAttempts: int("totalBlockedAttempts").default(0).notNull(),
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
@@ -52,6 +63,22 @@ export const blockingRules = mysqlTable("blocking_rules", {
 
 export type BlockingRule = typeof blockingRules.$inferSelect;
 export type InsertBlockingRule = typeof blockingRules.$inferInsert;
+
+// ============================================================================
+// VIOLATIONS TABLE - Track compliance violations
+// ============================================================================
+export const violations = mysqlTable("violations", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  ruleId: int("ruleId").notNull(),
+  
+  violationType: varchar("violationType", { length: 64 }).notNull(), // "attempt", "manual_disable"
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Violation = typeof violations.$inferSelect;
+export type InsertViolation = typeof violations.$inferInsert;
 
 // ============================================================================
 // USAGE ANALYTICS TABLE - Track user activity and compliance

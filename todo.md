@@ -1,5 +1,15 @@
 # NurGuard Shield - Project TODO
 
+## Activation & Retention Upgrade (Complete)
+- [x] Database schema updates for onboarding state
+- [x] 3-screen onboarding flow
+- [x] Compliance score and streak logic
+- [x] Dashboard protection status card
+- [x] Backend tRPC procedures for onboarding
+- [x] Referral unlock system (3-day streak)
+- [x] Foundation impact card
+- [x] Mobile PWA testing
+
 ## Core Infrastructure
 - [x] Database schema with all required tables
 - [x] User authentication with protected/public routes

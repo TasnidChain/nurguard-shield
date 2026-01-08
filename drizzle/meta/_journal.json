@@ -15,6 +15,13 @@
       "when": 1767813078620,
       "tag": "0001_luxuriant_zodiak",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1767890707004,
+      "tag": "0002_famous_silverclaw",
+      "breakpoints": true
     }
   ]
 }

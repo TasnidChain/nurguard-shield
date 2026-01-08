@@ -326,3 +326,13 @@ export async function getTotalFoundationDonations() {
   }).from(foundationDonations);
   return result[0]?.total || 0;
 }
+
+// ============================================================================
+// ONBOARDING HELPERS
+// ============================================================================
+export async function getOnboardingStatus(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
