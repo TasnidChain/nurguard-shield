@@ -28,19 +28,17 @@ const subscriptionRouter = router({
   getCheckoutUrl: protectedProcedure
     .input(z.object({ affiliateCode: z.string().optional() }))
     .mutation(async ({ ctx, input }) => {
-      // In production, this would call Lemon Squeezy API
-      // For now, return a placeholder
-      const baseUrl = process.env.LEMON_SQUEEZY_CHECKOUT_URL || "https://nurguard.lemonsqueezy.com/checkout";
-      const params = new URLSearchParams({
-        "checkout[email]": ctx.user.email || "",
-        "checkout[custom][user_id]": ctx.user.id.toString(),
-      });
+      const checkoutUrl = process.env.LEMON_SQUEEZY_CHECKOUT_URL;
       
-      if (input.affiliateCode) {
-        params.set("checkout[custom][affiliate_code]", input.affiliateCode);
+      if (!checkoutUrl) {
+        throw new TRPCError({ 
+          code: "INTERNAL_SERVER_ERROR", 
+          message: "Checkout URL not configured" 
+        });
       }
       
-      return { url: `${baseUrl}?${params.toString()}` };
+      // Return the checkout URL directly
+      return { url: checkoutUrl };
     }),
     
   // Redeem a gift code
