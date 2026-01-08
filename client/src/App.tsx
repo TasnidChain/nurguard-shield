@@ -13,6 +13,7 @@ import Blocking from "./pages/Blocking";
 import Affiliate from "./pages/Affiliate";
 import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
+import RedeemGiftCode from "./pages/RedeemGiftCode";
 import { Loader2 } from "lucide-react";
 
 function Router() {
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/blocking" component={Blocking} />
       <Route path="/affiliate" component={Affiliate} />
       <Route path="/settings" component={Settings} />
+      <Route path="/redeem" component={RedeemGiftCode} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

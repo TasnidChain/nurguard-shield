@@ -56,11 +56,11 @@ export default function Home() {
                 Start Protection for $7.77/mo <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            {!isAuthenticated && (
-              <a href={getLoginUrl()}>
-                <Button size="lg" variant="outline">Sign In</Button>
-              </a>
-            )}
+            <Link href="/redeem">
+              <Button size="lg" variant="outline" className="gap-2">
+                <Gift className="h-4 w-4" /> Have a Gift Code?
+              </Button>
+            </Link>
           </div>
           <p className="text-sm text-muted-foreground mt-4">
             <Heart className="h-4 w-4 inline mr-1 text-primary" />
