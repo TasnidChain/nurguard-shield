@@ -44,7 +44,7 @@ const subscriptionRouter = router({
     }),
     
   // Redeem a gift code
-  redeemGiftCode: protectedProcedure
+  redeemGiftCode: publicProcedure
     .input(z.object({ code: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
       const giftCode = await db.getGiftCodeByCode(input.code.toUpperCase());
@@ -55,6 +55,10 @@ const subscriptionRouter = router({
       
       if (giftCode.status !== "available") {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Gift code has already been used or expired" });
+      }
+      
+      if (!ctx.user) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in to redeem a gift code" });
       }
       
       const success = await db.redeemGiftCode(input.code.toUpperCase(), ctx.user.id);

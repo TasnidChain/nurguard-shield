@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, code, status, durationMonths FROM gift_codes WHERE code = 'NURGUARD1MONTH';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 36xyww9Pr8xVR2x.13271de965df --database MBWmLGu73CjUgRfnuvyNEC --execute SELECT id, code, status, durationMonths FROM gift_codes WHERE code = 'NURGUARD1MONTH';",
+  "rows": [
+    {
+      "id": "1",
+      "code": "NURGUARD1MONTH",
+      "status": "available",
+      "durationMonths": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\tstatus\tdurationMonths\n1\tNURGUARD1MONTH\tavailable\t1\n",
+  "stderr": "",
+  "execution_time_ms": 906
+}
