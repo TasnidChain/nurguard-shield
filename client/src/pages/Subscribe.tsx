@@ -37,7 +37,14 @@ export default function Subscribe() {
 
   const checkoutMutation = trpc.subscription.getCheckoutUrl.useMutation({
     onSuccess: (data) => {
-      window.location.href = data.url;
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error("Failed to get checkout URL");
+      }
+    },
+    onError: (error) => {
+      toast.error(error.message || "Checkout failed");
     },
   });
 
