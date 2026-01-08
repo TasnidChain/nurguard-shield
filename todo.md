@@ -68,3 +68,9 @@
 - [x] Add gift code input to Subscribe page
 - [x] Test redemption flow end-to-end
 - [x] Verify smooth UX and error handling
+
+## Landing Page Upgrade (Complete)
+- [x] Improve hero section with better copy
+- [x] Add features showcase with icons and descriptions
+- [x] Add pricing clarity and trust signals
+- [x] Improve CTAs and conversion optimization
