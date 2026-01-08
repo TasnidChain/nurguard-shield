@@ -311,6 +311,33 @@ const foundationRouter = router({
 });
 
 // ============================================================================
+// ADMIN GIFT CODE ROUTER
+// ============================================================================
+const adminGiftRouter = router({
+  // Generate a free gift code (admin only)
+  generateFreeCode: protectedProcedure
+    .input(z.object({ quantity: z.number().min(1).max(100).default(1) }))
+    .mutation(async ({ ctx, input }) => {
+      // Only allow owner/admin to generate codes
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can generate gift codes" });
+      }
+
+      const codes: string[] = [];
+      for (let i = 0; i < input.quantity; i++) {
+        const code = await db.createGiftCode({
+          purchaserId: ctx.user.id,
+          durationMonths: 12, // 1 year free
+          status: "available",
+        });
+        if (code) codes.push(code);
+      }
+
+      return { codes, count: codes.length };
+    }),
+});
+
+// ============================================================================
 // MAIN APP ROUTER
 // ============================================================================
 export const appRouter = router({
@@ -333,6 +360,7 @@ export const appRouter = router({
   onboarding: onboardingRouter,
   compliance: complianceRouter,
   foundation: foundationRouter,
+  admin: adminGiftRouter,
 });
 
 export type AppRouter = typeof appRouter;

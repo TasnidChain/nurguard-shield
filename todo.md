@@ -57,3 +57,8 @@
 - [x] Affiliate portal (protected)
 - [x] Settings (protected)
 - [x] Subscribe/checkout page
+
+## Free Gift Code System (Complete)
+- [x] Create gift code redemption endpoint for free access
+- [x] Add admin endpoint to generate free codes
+- [x] Test gift code flow
