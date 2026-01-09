@@ -33,7 +33,7 @@ export default function Home() {
           </Link>
 
           <p className="text-sm text-gray-400">
-            Takes 60 seconds • Cancel anytime • Supports Masajid worldwide
+            Phase 1: Limited to 333 Founding Members • Takes 60 seconds • Cancel anytime
           </p>
         </div>
       </section>
@@ -92,11 +92,11 @@ export default function Home() {
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6">
                   <Shield className="w-6 h-6 text-emerald-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Smart Content Blocking</h3>
+                <h3 className="text-xl font-bold mb-4">Customizable Content Blocking</h3>
                 <ul className="space-y-2 text-gray-400 text-sm">
-                  <li>• Porn & explicit sites blocked automatically</li>
-                  <li>• No manual setup hell</li>
-                  <li>• No data selling</li>
+                  <li>• Block porn, apps, websites, keywords</li>
+                  <li>• Personalized protection rules</li>
+                  <li>• Built for discipline, not surveillance</li>
                 </ul>
               </CardContent>
             </Card>
@@ -217,8 +217,8 @@ export default function Home() {
             </Link>
 
             <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
-              <p className="text-lg font-semibold text-emerald-400 mb-2">20% to Masajid</p>
-              <p className="text-gray-400">Every subscription supports the Ummah</p>
+              <p className="text-lg font-semibold text-emerald-400 mb-2">20% to Masajid Builder Foundation</p>
+              <p className="text-gray-400">Funding masajid and Islamic infrastructure</p>
             </div>
 
             <Link href="/vision" className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-emerald-500 transition cursor-pointer">
@@ -289,6 +289,7 @@ export default function Home() {
       <footer className="bg-gray-900 border-t border-gray-800 py-12 px-4 text-center text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto">
           <p className="mb-4">NurGuard. Guard your phone. Guard your heart.</p>
+          <p className="mb-4">Built by Muslims for digital protection. A Rizq Labs product.</p>
           <p>© 2024 NurGuard. All rights reserved.</p>
         </div>
       </footer>

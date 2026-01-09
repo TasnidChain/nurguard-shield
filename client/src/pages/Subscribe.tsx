@@ -115,6 +115,9 @@ export default function Subscribe() {
             <p className="text-muted-foreground">
               Start protecting your digital well-being today.
             </p>
+            <p className="text-sm text-emerald-600 font-semibold mt-2">
+              Phase 1: Founding Member Pricing — Limited to 333 members
+            </p>
           </div>
 
           {/* Pricing Card */}
@@ -125,6 +128,9 @@ export default function Subscribe() {
                 <span className="text-4xl font-bold">$7.77</span>
                 <span className="text-muted-foreground">/month</span>
               </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                Price will increase in Phase 2. Lock in Founding Member pricing now.
+              </p>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 mb-6">

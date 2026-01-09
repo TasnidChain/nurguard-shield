@@ -3,13 +3,14 @@ import { Card } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import Navigation from "@/components/Navigation";
+import { Link } from "wouter";
 
 export default function OverflowEconomy() {
   const { isAuthenticated } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      <Navigation />
+      <Navigation theme="slate" />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20">
@@ -308,13 +309,15 @@ export default function OverflowEconomy() {
 
       {/* Final CTA */}
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl font-bold mb-6">Join the System</h2>
+        <h2 className="text-3xl font-bold mb-6">Become a Founding Member</h2>
         <p className="text-xl text-slate-300 mb-8">
           You're not just paying for an app. You're funding digital protection, ethical income, physical masajid, and global access to worship.
         </p>
-        <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
-          Activate NurGuard
-        </Button>
+        <Link href="/subscribe">
+          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
+            Become a Founding Member
+          </Button>
+        </Link>
       </section>
 
       {/* Footer */}

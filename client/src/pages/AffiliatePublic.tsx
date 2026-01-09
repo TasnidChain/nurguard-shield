@@ -4,13 +4,14 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { TrendingUp, Users, DollarSign, Shield } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import { Link } from "wouter";
 
 export default function AffiliatePublic() {
   const { user, isAuthenticated } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      <Navigation />
+      <Navigation theme="slate" />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">
@@ -18,10 +19,10 @@ export default function AffiliatePublic() {
           Earn by Protecting Others
         </h1>
         <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-          Every person you refer earns you <span className="text-emerald-400 font-bold">$2.33/month</span> — recurring, forever.
+          Earn <span className="text-emerald-400 font-bold">30% recurring commission</span> on every active referral.
         </p>
         <p className="text-slate-400 mb-12">
-          That's 30% of every $7.77 subscription. No caps. No tricks.
+          At $7.77/month, that's ~$2.33 per user. As prices increase in future phases, your earnings increase proportionally.
         </p>
       </section>
 
@@ -90,7 +91,7 @@ export default function AffiliatePublic() {
             <div className="text-emerald-400 text-2xl font-bold flex-shrink-0">1</div>
             <div>
               <h3 className="text-xl font-bold mb-2">Get Your Link</h3>
-              <p className="text-slate-300">Sign up for NurGuard. Get your unique referral code instantly.</p>
+              <p className="text-slate-300">Affiliate access is unlocked immediately when you join NurGuard.</p>
             </div>
           </div>
           <div className="flex gap-6">
@@ -104,7 +105,7 @@ export default function AffiliatePublic() {
             <div className="text-emerald-400 text-2xl font-bold flex-shrink-0">3</div>
             <div>
               <h3 className="text-xl font-bold mb-2">They Subscribe</h3>
-              <p className="text-slate-300">They use your link, pay $7.77/month, and you earn $2.33/month.</p>
+              <p className="text-slate-300">They use your link and subscribe. You earn 30% of their subscription, every month.</p>
             </div>
           </div>
           <div className="flex gap-6">
@@ -150,15 +151,11 @@ export default function AffiliatePublic() {
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">
         <h2 className="text-3xl font-bold mb-6">Ready to Earn?</h2>
         <p className="text-slate-300 mb-8">Join the affiliate program. Start protecting people. Start earning.</p>
-        {isAuthenticated ? (
+        <Link href="/subscribe">
           <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
-            Go to Affiliate Dashboard
+            {isAuthenticated ? "Go to Affiliate Dashboard" : "Get Your Referral Link"}
           </Button>
-        ) : (
-          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
-            Sign Up & Start Earning
-          </Button>
-        )}
+        </Link>
       </section>
 
       {/* Footer */}

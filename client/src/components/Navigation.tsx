@@ -4,12 +4,20 @@ import { Shield, Menu, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 
-export default function Navigation() {
+interface NavigationProps {
+  theme?: 'dark' | 'slate';
+}
+
+export default function Navigation({ theme = 'dark' }: NavigationProps) {
   const { isAuthenticated } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const bgColor = theme === 'slate' ? 'bg-slate-900/95' : 'bg-gray-950/95';
+  const borderColor = theme === 'slate' ? 'border-slate-800' : 'border-gray-800';
+  const mobileBg = theme === 'slate' ? 'bg-slate-800' : 'bg-gray-900';
+
   return (
-    <nav className="sticky top-0 z-50 bg-gray-950/95 backdrop-blur border-b border-gray-800">
+    <nav className={`sticky top-0 z-50 ${bgColor} backdrop-blur border-b ${borderColor}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
           <Shield className="w-8 h-8 text-emerald-500" />
@@ -45,7 +53,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800 py-4 px-4">
+        <div className={`md:hidden ${mobileBg} border-t ${borderColor} py-4 px-4`}>
           <div className="space-y-3">
             <Link
               href="/affiliate-public"

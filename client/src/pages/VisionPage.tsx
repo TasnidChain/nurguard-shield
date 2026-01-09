@@ -2,11 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Users, Lock, Globe } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import { Link } from "wouter";
 
 export default function VisionPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      <Navigation />
+      <Navigation theme="slate" />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20">
@@ -32,7 +33,7 @@ export default function VisionPage() {
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-8">What NurGuard Actually Is</h2>
         <p className="text-slate-300 mb-8">
-          NurGuard is the first layer of the Rizq Labs ecosystem — the shield you put on before entering the rest of the civilization.
+          NurGuard is the first protection layer of the Rizq Labs ecosystem — a suite of tools designed to restore discipline, ownership, and barakah in the digital age.
         </p>
         <p className="text-slate-300 mb-8">
           It is designed to guard:
@@ -258,13 +259,15 @@ export default function VisionPage() {
 
       {/* Final CTA */}
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl font-bold mb-6">Start With the Shield</h2>
+        <h2 className="text-3xl font-bold mb-6">Start Your Protection Journey</h2>
         <p className="text-xl text-slate-300 mb-8">
           Everything else comes after.
         </p>
-        <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
-          Activate NurGuard
-        </Button>
+        <Link href="/subscribe">
+          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg">
+            Start Your Protection Journey
+          </Button>
+        </Link>
       </section>
 
       {/* Footer */}
