@@ -74,3 +74,10 @@
 - [x] Add features showcase with icons and descriptions
 - [x] Add pricing clarity and trust signals
 - [x] Improve CTAs and conversion optimization
+
+
+## Multi-Page Funnel (298 Credits)
+- [x] Affiliate page - "Earn by protecting others" (30% commissions)
+- [x] Overflow Economy page - Pricing phases, masajid funding, affiliate expansion
+- [x] Shield to Civilization page - Vision, 5-phase roadmap, long-term mission
+- [x] Update routing and navigation

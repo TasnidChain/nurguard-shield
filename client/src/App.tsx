@@ -14,6 +14,9 @@ import Affiliate from "./pages/Affiliate";
 import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
 import RedeemGiftCode from "./pages/RedeemGiftCode";
+import AffiliatePublic from "./pages/AffiliatePublic";
+import OverflowEconomy from "./pages/OverflowEconomy";
+import VisionPage from "./pages/VisionPage";
 import { Loader2 } from "lucide-react";
 
 function Router() {
@@ -39,6 +42,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/affiliate-public" component={AffiliatePublic} />
+      <Route path="/economy" component={OverflowEconomy} />
+      <Route path="/vision" component={VisionPage} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/subscribe" component={Subscribe} />
