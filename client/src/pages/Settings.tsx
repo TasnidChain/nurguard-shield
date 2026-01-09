@@ -5,6 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { Settings as SettingsIcon, ArrowLeft, User, CreditCard, Download, LogOut, Loader2, Shield, Heart } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { toast } from "sonner";
+import Navigation from "@/components/Navigation";
 
 export default function Settings() {
   const { user, logout, isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
@@ -63,20 +64,7 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-        <div className="container flex h-16 items-center gap-4">
-          <Link href="/dashboard">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-          </Link>
-          <div className="flex items-center gap-2">
-            <SettingsIcon className="h-6 w-6 text-primary" />
-            <span className="font-bold">Settings</span>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <main className="container py-6 space-y-6">
         {/* Profile */}

@@ -10,6 +10,7 @@ import { Shield, Plus, Trash2, ArrowLeft, Globe, Smartphone, Type, Loader2 } fro
 import { useState } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
+import Navigation from "@/components/Navigation";
 
 export default function Blocking() {
   const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
@@ -92,20 +93,7 @@ export default function Blocking() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-        <div className="container flex h-16 items-center gap-4">
-          <Link href="/dashboard">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" />
-            <span className="font-bold">Blocking Rules</span>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <main className="container py-6">
         {/* Add New Rule */}

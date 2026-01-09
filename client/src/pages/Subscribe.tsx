@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import { getLoginUrl } from "@/const";
 import { toast } from "sonner";
+import Navigation from "@/components/Navigation";
 
 export default function Subscribe() {
   const { user, isAuthenticated } = useAuth();
@@ -83,16 +84,7 @@ export default function Subscribe() {
   if (subscription?.isActive) {
     return (
       <div className="min-h-screen bg-background">
-        <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-          <div className="container flex h-16 items-center">
-            <Link href="/">
-              <div className="flex items-center gap-2 cursor-pointer">
-                <Shield className="h-8 w-8 text-primary" />
-                <span className="font-bold text-xl">NurGuard Shield</span>
-              </div>
-            </Link>
-          </div>
-        </header>
+        <Navigation />
         <main className="container py-16 text-center">
           <div className="max-w-md mx-auto">
             <div className="bg-primary/10 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
@@ -114,22 +106,7 @@ export default function Subscribe() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <Shield className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl">NurGuard Shield</span>
-            </div>
-          </Link>
-          {!isAuthenticated && (
-            <a href={getLoginUrl()}>
-              <Button variant="ghost">Sign In</Button>
-            </a>
-          )}
-        </div>
-      </header>
+      <Navigation />
 
       <main className="container py-12">
         <div className="max-w-lg mx-auto">

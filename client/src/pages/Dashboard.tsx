@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import { Shield, Flame, Target, Ban, Clock, Settings, Users, LogOut, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { FoundationImpactCard } from "@/components/FoundationImpactCard";
+import Navigation from "@/components/Navigation";
 
 export default function Dashboard() {
   const { user, logout, isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
@@ -72,29 +73,22 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <Shield className="h-8 w-8 text-emerald-600" />
-              <span className="font-bold text-xl">NurGuard</span>
-            </div>
-          </Link>
-          <nav className="flex items-center gap-2">
-            <Link href="/settings">
-              <Button variant="ghost" size="icon">
-                <Settings className="h-5 w-5" />
-              </Button>
-            </Link>
-            <Button variant="ghost" size="icon" onClick={handleLogout}>
-              <LogOut className="h-5 w-5" />
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <Navigation />
 
-      <main className="container py-6 space-y-6">
+      <main className="container py-6 space-y-6 mt-4">
+        {/* Quick Actions */}
+        <div className="flex gap-2 justify-end">
+          <Link href="/settings">
+            <Button variant="ghost" size="sm">
+              <Settings className="h-4 w-4 mr-2" />
+              Settings
+            </Button>
+          </Link>
+          <Button variant="ghost" size="sm" onClick={handleLogout}>
+            <LogOut className="h-4 w-4 mr-2" />
+            Logout
+          </Button>
+        </div>
         {/* Welcome */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Welcome back, {user?.name || "Shield Bearer"}</h1>

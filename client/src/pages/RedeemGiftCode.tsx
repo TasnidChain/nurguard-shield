@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import { Shield, Gift, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { toast } from "sonner";
+import Navigation from "@/components/Navigation";
 
 export default function RedeemGiftCode() {
   const [code, setCode] = useState("");
@@ -60,7 +61,9 @@ export default function RedeemGiftCode() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-background">
+      <Navigation />
+      <div className="flex items-center justify-center p-4 min-h-[calc(100vh-80px)]">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -120,6 +123,7 @@ export default function RedeemGiftCode() {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

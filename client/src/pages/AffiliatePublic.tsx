@@ -3,25 +3,14 @@ import { Card } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { TrendingUp, Users, DollarSign, Shield } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 export default function AffiliatePublic() {
   const { user, isAuthenticated } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      {/* Navigation */}
-      <nav className="border-b border-emerald-500/20 sticky top-0 z-50 bg-slate-900/80 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-emerald-400">NurGuard</div>
-          {isAuthenticated ? (
-            <Button variant="outline" className="border-emerald-400 text-emerald-400 hover:bg-emerald-400/10">
-              Dashboard
-            </Button>
-          ) : (
-            <Button className="bg-emerald-500 hover:bg-emerald-600">Sign In</Button>
-          )}
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">

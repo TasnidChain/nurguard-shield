@@ -5,6 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { Users, DollarSign, Copy, ArrowLeft, Trophy, Loader2, Shield, Lock, Flame } from "lucide-react";
 import { Link } from "wouter";
 import { toast } from "sonner";
+import Navigation from "@/components/Navigation";
 
 export default function Affiliate() {
   const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
@@ -99,18 +100,7 @@ export default function Affiliate() {
   // UNLOCKED STATE - Show affiliate dashboard
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/dashboard">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-          </Link>
-          <h1 className="text-xl font-bold">Share & Earn</h1>
-          <div className="w-10" />
-        </div>
-      </header>
+      <Navigation />
 
       <main className="container py-6 space-y-6">
         {/* Unlock Badge */}

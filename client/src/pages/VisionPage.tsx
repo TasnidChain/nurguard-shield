@@ -1,17 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Users, Lock, Globe } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 export default function VisionPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-      {/* Navigation */}
-      <nav className="border-b border-emerald-500/20 sticky top-0 z-50 bg-slate-900/80 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-emerald-400">NurGuard</div>
-          <Button className="bg-emerald-500 hover:bg-emerald-600">Back Home</Button>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20">
