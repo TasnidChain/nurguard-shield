@@ -18,6 +18,11 @@ export default function Home() {
             <Shield className="w-8 h-8 text-emerald-500" />
             <span className="text-xl font-bold">NurGuard</span>
           </div>
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            <Link href="/affiliate-public" className="text-gray-300 hover:text-emerald-500 transition">Earn 30%</Link>
+            <Link href="/economy" className="text-gray-300 hover:text-emerald-500 transition">Our Model</Link>
+            <Link href="/vision" className="text-gray-300 hover:text-emerald-500 transition">Our Vision</Link>
+          </div>
           {isAuthenticated && (
             <Link href="/dashboard">
               <Button className="bg-emerald-600 hover:bg-emerald-700">Dashboard</Button>
@@ -224,20 +229,20 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">Built by people who actually care.</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
-              <p className="text-lg font-semibold text-emerald-400 mb-2">Built by Muslims</p>
-              <p className="text-gray-400">For real digital protection</p>
-            </div>
+            <Link href="/affiliate-public" className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-emerald-500 transition cursor-pointer">
+              <p className="text-lg font-semibold text-emerald-400 mb-2">Earn 30%</p>
+              <p className="text-gray-400">Become an affiliate partner</p>
+            </Link>
 
             <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
               <p className="text-lg font-semibold text-emerald-400 mb-2">20% to Masajid</p>
               <p className="text-gray-400">Every subscription supports the Ummah</p>
             </div>
 
-            <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
-              <p className="text-lg font-semibold text-emerald-400 mb-2">Early Adopters</p>
-              <p className="text-gray-400">Shaping the future of halal tech</p>
-            </div>
+            <Link href="/vision" className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-emerald-500 transition cursor-pointer">
+              <p className="text-lg font-semibold text-emerald-400 mb-2">Our Vision</p>
+              <p className="text-gray-400">From shield to civilization</p>
+            </Link>
           </div>
         </div>
       </section>
