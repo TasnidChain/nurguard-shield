@@ -32,32 +32,32 @@ export default function AffiliatePublic() {
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <DollarSign className="w-12 h-12 text-emerald-400 mb-4" />
-            <h3 className="text-xl font-bold mb-3">Recurring Income</h3>
-            <p className="text-slate-300">
+            <h3 className="text-xl font-bold mb-3 text-white">Recurring Income</h3>
+            <p className="text-slate-200">
               Every referral pays you every month. Help someone once, earn forever.
             </p>
           </Card>
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <Users className="w-12 h-12 text-emerald-400 mb-4" />
-            <h3 className="text-xl font-bold mb-3">Unlimited Referrals</h3>
-            <p className="text-slate-300">
+            <h3 className="text-xl font-bold mb-3 text-white">Unlimited Referrals</h3>
+            <p className="text-slate-200">
               No cap on how many people you can refer. No limits on earnings.
             </p>
           </Card>
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <Shield className="w-12 h-12 text-emerald-400 mb-4" />
-            <h3 className="text-xl font-bold mb-3">Ethical Incentives</h3>
-            <p className="text-slate-300">
+            <h3 className="text-xl font-bold mb-3 text-white">Ethical Incentives</h3>
+            <p className="text-slate-200">
               You're helping people protect themselves, not selling them hype.
             </p>
           </Card>
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <TrendingUp className="w-12 h-12 text-emerald-400 mb-4" />
-            <h3 className="text-xl font-bold mb-3">Easy Sharing</h3>
-            <p className="text-slate-300">
+            <h3 className="text-xl font-bold mb-3 text-white">Easy Sharing</h3>
+            <p className="text-slate-200">
               Get your unique referral link. Share it anywhere. Track earnings in real-time.
             </p>
           </Card>
@@ -122,7 +122,7 @@ export default function AffiliatePublic() {
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Who Should Become an Affiliate?</h2>
         <div className="bg-slate-800 border border-emerald-500/30 rounded-lg p-8">
-          <ul className="space-y-4 text-slate-300">
+          <ul className="space-y-4 text-slate-200">
             <li className="flex gap-3">
               <span className="text-emerald-400 font-bold">✓</span>
               <span>Anyone who believes in digital protection</span>

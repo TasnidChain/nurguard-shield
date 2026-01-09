@@ -87,13 +87,13 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <Card className="bg-gray-900 border-gray-800 hover:border-emerald-500 transition">
+            <Card className="bg-gray-900 border-emerald-500/30 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10 transition">
               <CardContent className="pt-8">
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6">
                   <Shield className="w-6 h-6 text-emerald-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Customizable Content Blocking</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
+                <h3 className="text-xl font-bold mb-4 text-white">Customizable Content Blocking</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• Block porn, apps, websites, keywords</li>
                   <li>• Personalized protection rules</li>
                   <li>• Built for discipline, not surveillance</li>
@@ -102,13 +102,13 @@ export default function Home() {
             </Card>
 
             {/* Feature 2 */}
-            <Card className="bg-gray-900 border-gray-800 hover:border-emerald-500 transition">
+            <Card className="bg-gray-900 border-emerald-500/30 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10 transition">
               <CardContent className="pt-8">
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6">
                   <Heart className="w-6 h-6 text-emerald-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Mindful Protection</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
+                <h3 className="text-xl font-bold mb-4 text-white">Mindful Protection</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• Reduces dopamine traps</li>
                   <li>• Encourages intentional use</li>
                   <li>• Built for self-discipline</li>
@@ -117,13 +117,13 @@ export default function Home() {
             </Card>
 
             {/* Feature 3 */}
-            <Card className="bg-gray-900 border-gray-800 hover:border-emerald-500 transition">
+            <Card className="bg-gray-900 border-emerald-500/30 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10 transition">
               <CardContent className="pt-8">
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6">
                   <Lock className="w-6 h-6 text-emerald-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Values-First Design</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
+                <h3 className="text-xl font-bold mb-4 text-white">Values-First Design</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• No spying on messages</li>
                   <li>• No shame tactics</li>
                   <li>• Built for Muslims</li>

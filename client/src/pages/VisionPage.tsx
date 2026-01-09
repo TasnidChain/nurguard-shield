@@ -90,13 +90,13 @@ export default function VisionPage() {
         <Card className="bg-slate-800 border-emerald-500/30 p-8 mb-6">
           <div className="flex gap-4 mb-4">
             <Shield className="w-8 h-8 text-emerald-400 flex-shrink-0" />
-            <h3 className="text-2xl font-bold">Phase 1: NurGuard Shield</h3>
+            <h3 className="text-2xl font-bold text-white">Phase 1: NurGuard Shield</h3>
           </div>
-          <p className="text-slate-400 mb-4">Launch Phase</p>
-          <p className="text-slate-300 mb-6">
+          <p className="text-slate-300 mb-4">Launch Phase</p>
+          <p className="text-slate-200 mb-6">
             Simple. Powerful. Viral.
           </p>
-          <div className="space-y-3 text-slate-300 mb-6">
+          <div className="space-y-3 text-slate-200 mb-6">
             <p className="font-bold text-emerald-400">What It Does:</p>
             <ul className="space-y-2 ml-6">
               <li>🚫 Blocks haram & explicit content</li>
@@ -106,7 +106,7 @@ export default function VisionPage() {
               <li>🔒 Adds an accountability layer</li>
             </ul>
           </div>
-          <p className="text-slate-300">
+          <p className="text-slate-200">
             <span className="text-emerald-400 font-bold">Outcome:</span> Immediate value. Easy onboarding. Subscription-based. Mass Ummah adoption.
           </p>
         </Card>
@@ -121,7 +121,7 @@ export default function VisionPage() {
           <p className="text-slate-300 mb-6">
             Once protection is established, NurGuard evolves. From blocking → building.
           </p>
-          <div className="space-y-3 text-slate-300 mb-6">
+          <div className="space-y-3 text-slate-200 mb-6">
             <p className="font-bold text-slate-300">What Unlocks:</p>
             <ul className="space-y-2 ml-6">
               <li>📿 Salah tracking (without shame)</li>
@@ -143,7 +143,7 @@ export default function VisionPage() {
           <p className="text-slate-300 mb-6">
             Users are no longer passive. They become operators.
           </p>
-          <div className="space-y-3 text-slate-300 mb-6">
+          <div className="space-y-3 text-slate-200 mb-6">
             <p className="font-bold text-slate-300">What Missions Are:</p>
             <ul className="space-y-2 ml-6">
               <li>Real-world righteous actions</li>
@@ -165,7 +165,7 @@ export default function VisionPage() {
           <p className="text-slate-300 mb-6">
             NurGuard becomes serious infrastructure.
           </p>
-          <div className="space-y-3 text-slate-300 mb-6">
+          <div className="space-y-3 text-slate-200 mb-6">
             <p className="font-bold text-slate-300">What It Expands Into:</p>
             <ul className="space-y-2 ml-6">
               <li>🔑 Password & credential vaults</li>

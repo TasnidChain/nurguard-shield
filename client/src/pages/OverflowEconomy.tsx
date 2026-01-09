@@ -87,15 +87,15 @@ export default function OverflowEconomy() {
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-2xl font-bold text-emerald-400">Phase 1: Founding Phase</h3>
-                <p className="text-slate-300 mt-2">Current Phase</p>
+                <p className="text-slate-200 mt-2">Current Phase</p>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold">$7.77</div>
+                <div className="text-4xl font-bold text-white">$7.77</div>
                 <div className="text-slate-400">/month</div>
               </div>
             </div>
-            <p className="text-slate-300 mb-4">User Cap: 333 total users</p>
-            <p className="text-slate-300">
+            <p className="text-slate-200 mb-4">User Cap: 333 total users</p>
+            <p className="text-slate-200">
               This phase exists to seed the system, reward first movers, and prove demand. Once 333 users join, Phase 1 closes permanently.
             </p>
           </Card>
@@ -213,7 +213,7 @@ export default function OverflowEconomy() {
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <h3 className="text-xl font-bold text-emerald-400 mb-4">Protection Infrastructure</h3>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-slate-200">
               <li>• Servers & security</li>
               <li>• Blocking systems</li>
               <li>• App development</li>
@@ -223,7 +223,7 @@ export default function OverflowEconomy() {
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <h3 className="text-xl font-bold text-emerald-400 mb-4">Affiliate Distribution</h3>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-slate-200">
               <li>• 30% recurring commissions</li>
               <li>• Ethical incentives</li>
               <li>• No hype funnels</li>
@@ -232,7 +232,7 @@ export default function OverflowEconomy() {
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <h3 className="text-xl font-bold text-emerald-400 mb-4">Masajid Builder Foundation</h3>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-slate-200">
               <li>• Land acquisition</li>
               <li>• Masjid construction</li>
               <li>• Community hubs</li>
@@ -241,7 +241,7 @@ export default function OverflowEconomy() {
 
           <Card className="bg-slate-800 border-emerald-500/30 p-8">
             <h3 className="text-xl font-bold text-emerald-400 mb-4">System Expansion</h3>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-slate-200">
               <li>• Scaling capacity</li>
               <li>• Regional deployment</li>
               <li>• Long-term sustainability</li>
