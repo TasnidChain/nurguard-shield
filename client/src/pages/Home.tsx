@@ -1,13 +1,14 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, Lock, Heart, Play } from "lucide-react";
+import { Shield, Lock, Heart, Play, Menu, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
   const [videoOpen, setVideoOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -23,12 +24,49 @@ export default function Home() {
             <Link href="/economy" className="text-gray-300 hover:text-emerald-500 transition">Our Model</Link>
             <Link href="/vision" className="text-gray-300 hover:text-emerald-500 transition">Our Vision</Link>
           </div>
-          {isAuthenticated && (
-            <Link href="/dashboard">
-              <Button className="bg-emerald-600 hover:bg-emerald-700">Dashboard</Button>
-            </Link>
-          )}
+          <div className="flex items-center gap-4">
+            {isAuthenticated && (
+              <Link href="/dashboard">
+                <Button className="bg-emerald-600 hover:bg-emerald-700">Dashboard</Button>
+              </Link>
+            )}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-gray-300 hover:text-emerald-500 transition"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-gray-900 border-t border-gray-800 py-4 px-4">
+            <div className="space-y-3">
+              <Link
+                href="/affiliate-public"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-gray-300 hover:text-emerald-500 transition py-2"
+              >
+                Earn 30%
+              </Link>
+              <Link
+                href="/economy"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-gray-300 hover:text-emerald-500 transition py-2"
+              >
+                Our Model
+              </Link>
+              <Link
+                href="/vision"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-gray-300 hover:text-emerald-500 transition py-2"
+              >
+                Our Vision
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* HERO SECTION */}
