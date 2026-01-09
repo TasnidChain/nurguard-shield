@@ -32,7 +32,7 @@ export default function Affiliate() {
   }
 
   const streakDays = compliance?.streakDays || 0;
-  const isUnlocked = streakDays >= 3;
+  const isUnlocked = streakDays >= 0; // Unlock on Day 1
   
   const { data: stats, isLoading } = trpc.affiliate.getStats.useQuery(undefined, {
     enabled: isUnlocked,
