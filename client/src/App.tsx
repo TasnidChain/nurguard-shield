@@ -17,6 +17,12 @@ import RedeemGiftCode from "./pages/RedeemGiftCode";
 import AffiliatePublic from "./pages/AffiliatePublic";
 import OverflowEconomy from "./pages/OverflowEconomy";
 import VisionPage from "./pages/VisionPage";
+import Download from "./pages/Download";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import RefundPolicy from "./pages/RefundPolicy";
+import Contact from "./pages/Contact";
 import { Loader2 } from "lucide-react";
 
 function Router() {
@@ -52,6 +58,12 @@ function Router() {
       <Route path="/affiliate" component={Affiliate} />
       <Route path="/settings" component={Settings} />
       <Route path="/redeem" component={RedeemGiftCode} />
+      <Route path="/download" component={Download} />
+      <Route path="/checkout/success" component={CheckoutSuccess} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/refund-policy" component={RefundPolicy} />
+      <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
