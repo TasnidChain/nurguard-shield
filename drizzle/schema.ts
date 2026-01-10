@@ -27,6 +27,9 @@ export const users = mysqlTable("users", {
   hasCompletedOnboarding: int("hasCompletedOnboarding").default(0).notNull(),
   protectionIntent: text("protectionIntent"), // JSON array: ["social_media", "adult_content", etc]
   
+  // NextDNS Integration
+  nextdnsProfileId: varchar("nextdnsProfileId", { length: 128 }),
+  
   // Compliance & Streak tracking
   streakDays: int("streakDays").default(0).notNull(),
   streakStartedAt: timestamp("streakStartedAt"),

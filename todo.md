@@ -83,11 +83,20 @@
 - [x] Update routing and navigation
 
 ## Phase 1 MVP Dashboard & Setup
-- [ ] Device Setup page with iOS/Android/Desktop instructions
-- [ ] Profile Selection page (Halal Mode, Kids Mode, Focus Mode)
-- [ ] Dashboard with device status (Active/Not Active) and blocked categories
-- [ ] Masajid Builder mission layer in dashboard
-- [ ] Update Home page with Phase 1 microcopy and CTAs
-- [ ] Add legal disclaimers and FAQ page
-- [ ] Integrate payment unlock flow to setup pages
+- [x] Device Setup page with iOS/Android/Desktop instructions
+- [x] Profile Selection page (Halal Mode, Kids Mode, Focus Mode)
+- [x] Dashboard with device status (Active/Not Active) and blocked categories
+- [x] Masajid Builder mission layer in dashboard
+- [x] Update Home page with Phase 1 microcopy and CTAs
+- [x] Add legal disclaimers and FAQ page
+- [x] Integrate payment unlock flow to setup pages
 - [ ] Affiliate dashboard with streak-based unlocks
+
+## NextDNS Integration (Phase 1 MVP)
+- [x] NextDNS API wrapper (create/update/delete profiles)
+- [x] Per-user profile creation on subscription
+- [x] Device configuration endpoints (iOS/Android/Windows/Mac/Linux)
+- [ ] Dashboard with real-time blocking analytics
+- [ ] Subscription lifecycle automation (profile cleanup on cancel)
+- [ ] White-label branding layer (hide NextDNS, show NurGuard)
+- [ ] Deployment scripts and beta testing docs

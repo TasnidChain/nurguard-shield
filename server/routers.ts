@@ -303,6 +303,36 @@ const giftRouter = router({
 // DNS VERIFICATION ROUTER
 // ============================================================================
 const dnsRouter = router({
+  // Get device DNS configuration for a specific platform
+  getDeviceConfig: protectedProcedure
+    .input(z.object({
+      platform: z.enum(["ios", "android", "windows", "macos", "linux"]),
+      deviceName: z.string().optional(),
+    }))
+    .query(async ({ ctx, input }) => {
+      const user = await db.getUserById(ctx.user.id);
+      if (!user) throw new TRPCError({ code: "NOT_FOUND" });
+      
+      if (user.subscriptionStatus !== "active") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Active subscription required" });
+      }
+      
+      const profileId = user.nextdnsProfileId || process.env.NEXTDNS_DEFAULT_PROFILE_ID;
+      if (!profileId) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "DNS profile not configured" });
+      }
+      
+      const { getDeviceDNSConfig } = await import("./nextdns");
+      const config = getDeviceDNSConfig(profileId, input.platform, input.deviceName);
+      
+      return {
+        endpoint: config.endpoint,
+        instructions: config.instructions,
+        platform: input.platform,
+        profileId,
+      };
+    }),
+  
   // Verify if DNS is configured correctly
   verify: publicProcedure.query(async ({ ctx }) => {
     // Check if request is coming through NurGuard DNS
