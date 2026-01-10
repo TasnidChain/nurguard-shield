@@ -14,16 +14,16 @@ export default function OverflowEconomy() {
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20">
-        <h1 className="text-5xl font-bold mb-6">NurGuard Is Not Static Pricing</h1>
-        <p className="text-2xl text-emerald-400 mb-6">It's a Living Protection System</p>
+        <h1 className="text-5xl font-bold mb-6">The NurGuard Economy</h1>
+        <p className="text-2xl text-emerald-400 mb-6">How Protection Scales & Impact Overflows</p>
         <p className="text-xl text-slate-300 max-w-3xl">
           NurGuard grows in phases. As more people are protected, the system expands, prices adjust, and impact increases — for users, affiliates, and masajid.
         </p>
       </section>
 
-      {/* Why Overflow */}
+      {/* Why Phases */}
       <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8">Why Overflow Exists</h2>
+        <h2 className="text-3xl font-bold mb-8">Why Phases?</h2>
         <div className="space-y-6 text-slate-300">
           <p>
             <span className="text-emerald-400 font-bold">Cheap forever is not sustainable.</span> Extractive tech is not halal.
@@ -52,12 +52,12 @@ export default function OverflowEconomy() {
 
       {/* The Mission */}
       <section className="max-w-6xl mx-auto px-4 py-16 bg-emerald-500/5 rounded-lg border border-emerald-500/20 my-12 p-8">
-        <h2 className="text-3xl font-bold mb-8">The Masajid Builder Goal (Non-Negotiable)</h2>
+        <h2 className="text-3xl font-bold mb-8">Masajid Builder Foundation</h2>
         <div className="space-y-6 text-slate-300">
           <p className="text-2xl font-bold text-emerald-400">
-            A masjid within 15 minutes of every Muslim worldwide.
+            20% of all NurGuard revenue funds the Masajid Builder Foundation.
           </p>
-          <p>Not someday. Not symbolically. Physically.</p>
+          <p>Funding real masajid infrastructure and long-term sadaqah jariyah.</p>
           <p>That means:</p>
           <ul className="space-y-2 ml-6">
             <li>• Land acquisition</li>

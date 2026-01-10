@@ -11,8 +11,8 @@ export default function VisionPage() {
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20">
-        <h1 className="text-5xl font-bold mb-6">NurGuard: From Shield to Civilization</h1>
-        <p className="text-2xl text-emerald-400 mb-8">The Architecture of Protection</p>
+        <h1 className="text-5xl font-bold mb-6">Our Vision</h1>
+        <p className="text-2xl text-emerald-400 mb-8">NurGuard is the first layer of a larger ecosystem</p>
         <div className="space-y-6 text-lg text-slate-300">
           <p>
             <span className="text-emerald-400 font-bold">NurGuard is not an app.</span> It is a protection system.
@@ -33,7 +33,7 @@ export default function VisionPage() {
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-8">What NurGuard Actually Is</h2>
         <p className="text-slate-300 mb-8">
-          NurGuard is the first protection layer of the Rizq Labs ecosystem — a suite of tools designed to restore discipline, ownership, and barakah in the digital age.
+          NurGuard is the first protection layer of the Rizq Labs ecosystem — a suite of tools designed to restore discipline, ownership, and barakah in the digital age. We are building tools that help Muslims reclaim their time, attention, and spiritual focus.
         </p>
         <p className="text-slate-300 mb-8">
           It is designed to guard:

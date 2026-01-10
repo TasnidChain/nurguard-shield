@@ -16,13 +16,13 @@ export default function AffiliatePublic() {
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-20 text-center">
         <h1 className="text-5xl font-bold mb-6 leading-tight">
-          Earn by Protecting Others
+          Earn Recurring Income While Protecting Others
         </h1>
         <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-          Earn <span className="text-emerald-400 font-bold">30% recurring commission</span> on every active referral.
+          Share NurGuard with your community and earn <span className="text-emerald-400 font-bold">30% recurring commission</span> on every active referral.
         </p>
         <p className="text-slate-400 mb-12">
-          At $7.77/month, that's ~$2.33 per user. As prices increase in future phases, your earnings increase proportionally.
+          At the current $7.77/month Founding Member price, that's ~$2.33/month per referral. As prices increase in future phases, your earnings increase proportionally.
         </p>
       </section>
 
