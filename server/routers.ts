@@ -300,6 +300,25 @@ const giftRouter = router({
 });
 
 // ============================================================================
+// DNS VERIFICATION ROUTER
+// ============================================================================
+const dnsRouter = router({
+  // Verify if DNS is configured correctly
+  verify: publicProcedure.query(async ({ ctx }) => {
+    // Check if request is coming through NurGuard DNS
+    // This is a simple check - in production you'd verify the DNS resolver
+    const clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.socket.remoteAddress || '';
+    
+    // For now, return a simple status
+    // In production, you'd check if the request came through your DNS server
+    return {
+      dnsActive: false, // Will be true when request comes through dns.nurguard.app
+      message: "Complete DNS setup to activate protection",
+    };
+  }),
+});
+
+// ============================================================================
 // FOUNDATION ROUTER
 // ============================================================================
 const foundationRouter = router({
@@ -365,6 +384,7 @@ export const appRouter = router({
   compliance: complianceRouter,
   foundation: foundationRouter,
   admin: adminGiftRouter,
+  dns: dnsRouter,
 });
 
 export type AppRouter = typeof appRouter;

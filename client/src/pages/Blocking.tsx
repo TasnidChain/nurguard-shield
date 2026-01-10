@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { trpc } from "@/lib/trpc";
-import { Shield, Plus, Trash2, ArrowLeft, Globe, Smartphone, Type, Loader2 } from "lucide-react";
+import { Shield, Plus, Trash2, ArrowLeft, Globe, Smartphone, Type, Loader2, AlertCircle, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
@@ -96,11 +96,54 @@ export default function Blocking() {
       <Navigation />
 
       <main className="container py-6">
+        {/* DNS Status Banner */}
+        <Card className="mb-6 bg-yellow-950/30 border-yellow-500/30">
+          <CardContent className="pt-6">
+            <div className="flex gap-4 items-start">
+              <AlertCircle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-bold text-yellow-400 mb-2">⚠️ Important: DNS Setup Required</h3>
+                <p className="text-yellow-300 text-sm mb-3">
+                  NurGuard currently uses DNS-based protection. This provides real blocking but can be bypassed by changing DNS settings. Native VPN protection is coming in a future update.
+                </p>
+                <Link href="/setup-dns">
+                  <Button variant="outline" size="sm" className="text-yellow-400 border-yellow-500/50 hover:bg-yellow-950/30">
+                    Complete DNS Setup
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* DNS Status Card */}
+        <Card className="mb-6 bg-gray-900 border-emerald-500/30">
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <p className="text-gray-400 text-sm mb-2">Protection Method</p>
+                <p className="font-bold">DNS-Based Blocking</p>
+              </div>
+              <div>
+                <p className="text-gray-400 text-sm mb-2">Status</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <p className="font-bold">Setup Required</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-gray-400 text-sm mb-2">Protection Level</p>
+                <p className="font-bold">Basic (Phase 1)</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Add New Rule */}
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle className="text-lg">Add New Rule</CardTitle>
-            <CardDescription>Block websites, apps, or keywords</CardDescription>
+            <CardTitle className="text-lg">Blocking Rules (DNS-Enforced)</CardTitle>
+            <CardDescription>These rules are enforced through your device's DNS settings. For maximum protection, ensure NurGuard DNS is active.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4">

@@ -23,6 +23,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import RefundPolicy from "./pages/RefundPolicy";
 import Contact from "./pages/Contact";
+import SetupDNS from "./pages/SetupDNS";
 import { Loader2 } from "lucide-react";
 
 function Router() {
@@ -60,6 +61,7 @@ function Router() {
       <Route path="/redeem" component={RedeemGiftCode} />
       <Route path="/download" component={Download} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
+      <Route path="/setup-dns" component={SetupDNS} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route path="/refund-policy" component={RefundPolicy} />
