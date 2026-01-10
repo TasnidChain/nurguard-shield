@@ -81,3 +81,13 @@
 - [x] Overflow Economy page - Pricing phases, masajid funding, affiliate expansion
 - [x] Shield to Civilization page - Vision, 5-phase roadmap, long-term mission
 - [x] Update routing and navigation
+
+## Phase 1 MVP Dashboard & Setup
+- [ ] Device Setup page with iOS/Android/Desktop instructions
+- [ ] Profile Selection page (Halal Mode, Kids Mode, Focus Mode)
+- [ ] Dashboard with device status (Active/Not Active) and blocked categories
+- [ ] Masajid Builder mission layer in dashboard
+- [ ] Update Home page with Phase 1 microcopy and CTAs
+- [ ] Add legal disclaimers and FAQ page
+- [ ] Integrate payment unlock flow to setup pages
+- [ ] Affiliate dashboard with streak-based unlocks

@@ -24,6 +24,9 @@ import Terms from "./pages/Terms";
 import RefundPolicy from "./pages/RefundPolicy";
 import Contact from "./pages/Contact";
 import SetupDNS from "./pages/SetupDNS";
+import DeviceSetup from "./pages/DeviceSetup";
+import ProfileSelect from "./pages/ProfileSelect";
+import DashboardV2 from "./pages/DashboardV2";
 import { Loader2 } from "lucide-react";
 
 function Router() {
@@ -62,6 +65,9 @@ function Router() {
       <Route path="/download" component={Download} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
       <Route path="/setup-dns" component={SetupDNS} />
+      <Route path="/device-setup" component={DeviceSetup} />
+      <Route path="/profile-select" component={ProfileSelect} />
+      <Route path="/dashboard-v2" component={DashboardV2} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route path="/refund-policy" component={RefundPolicy} />
