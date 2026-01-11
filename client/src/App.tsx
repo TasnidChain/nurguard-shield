@@ -26,6 +26,7 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import AdminGiftCodes from "./pages/AdminGiftCodes";
 import PayoutRequest from "./pages/PayoutRequest";
+import NextDNSConnect from "./pages/NextDNSConnect";
 import SetupDNS from "./pages/SetupDNS";
 import DeviceSetup from "./pages/DeviceSetup";
 import ProfileSelect from "./pages/ProfileSelect";
@@ -78,6 +79,7 @@ function Router() {
       <Route path="/faq" component={FAQ} />
       <Route path="/admin/gift-codes" component={AdminGiftCodes} />
       <Route path="/payout" component={PayoutRequest} />
+      <Route path="/nextdns-connect" component={NextDNSConnect} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

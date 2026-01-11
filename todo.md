@@ -109,3 +109,10 @@
 - [x] Create affiliate FAQ page (/faq)
 - [x] Create gift code admin panel (/admin/gift-codes)
 - [x] Add payout request form
+
+
+## Email Notifications & NextDNS Integration
+- [x] Create email notification system (setup instructions, payout confirmations)
+- [x] Add NextDNS account connection UI
+- [ ] Integrate email into payment flow
+- [ ] Integrate email into payout flow

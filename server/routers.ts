@@ -407,17 +407,33 @@ const dnsRouter = router({
   
   // Verify if DNS is configured correctly
   verify: publicProcedure.query(async ({ ctx }) => {
-    // Check if request is coming through NurGuard DNS
-    // This is a simple check - in production you'd verify the DNS resolver
     const clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.socket.remoteAddress || '';
-    
-    // For now, return a simple status
-    // In production, you'd check if the request came through your DNS server
     return {
-      dnsActive: false, // Will be true when request comes through dns.nurguard.app
+      dnsActive: false,
       message: "Complete DNS setup to activate protection",
     };
   }),
+  
+  getStatus: protectedProcedure.query(async ({ ctx }) => {
+    const user = await db.getUserById(ctx.user.id);
+    if (!user) throw new TRPCError({ code: "NOT_FOUND" });
+    return {
+      isConnected: !!user.nextdnsProfileId,
+      profileId: user.nextdnsProfileId || null,
+    };
+  }),
+  
+  verifyConnection: protectedProcedure
+    .input(z.object({ profileId: z.string().min(3).max(20) }))
+    .mutation(async ({ ctx, input }) => {
+      const { verifyNextDNSProfile } = await import("./nextdns");
+      const isValid = await verifyNextDNSProfile(input.profileId);
+      if (!isValid) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid NextDNS profile ID" });
+      }
+      await db.updateUserNextDNSProfile(ctx.user.id, input.profileId);
+      return { success: true, profileId: input.profileId };
+    }),
 });
 
 // ============================================================================

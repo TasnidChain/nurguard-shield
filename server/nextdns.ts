@@ -253,3 +253,22 @@ export async function verifyNextDNSAPIKey(): Promise<boolean> {
     return false;
   }
 }
+
+
+/**
+ * Verify a NextDNS profile ID is valid and accessible
+ */
+export async function verifyNextDNSProfile(profileId: string): Promise<boolean> {
+  try {
+    const response = await fetch(`${NEXTDNS_API_BASE}/profiles/${profileId}`, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": env.nextdnsApiKey,
+      },
+    });
+    return response.ok;
+  } catch (error) {
+    console.error("Failed to verify NextDNS profile:", error);
+    return false;
+  }
+}
