@@ -383,3 +383,15 @@ export async function createUserFromCheckout(data: {
   
   return createdUser;
 }
+
+
+// ============================================================================
+// GIFT CODE HELPERS
+// ============================================================================
+export async function getGiftCodeById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db.select().from(giftCodes).where(eq(giftCodes.id, id)).limit(1);
+  return result[0] || null;
+}

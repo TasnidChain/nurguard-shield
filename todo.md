@@ -101,3 +101,11 @@
 - [ ] Subscription lifecycle automation (profile cleanup on cancel)
 - [ ] White-label branding layer (hide NextDNS, show NurGuard)
 - [ ] Deployment scripts and beta testing docs
+
+
+## Critical Affiliate & Gift Code Fixes (200 Credits)
+- [x] Fix affiliate unlock messaging (remove 3-day confusion)
+- [x] Add referral tracking to affiliate dashboard
+- [x] Create affiliate FAQ page (/faq)
+- [x] Create gift code admin panel (/admin/gift-codes)
+- [x] Add payout request form

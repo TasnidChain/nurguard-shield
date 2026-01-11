@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Users, DollarSign, Copy, ArrowLeft, Trophy, Loader2, Shield, Lock, Flame } from "lucide-react";
+import { Users, DollarSign, Copy, Trophy, Loader2, Shield } from "lucide-react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 import Navigation from "@/components/Navigation";
@@ -10,10 +10,6 @@ import Navigation from "@/components/Navigation";
 export default function Affiliate() {
   const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
   const { data: subscription } = trpc.subscription.getStatus.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
-
-  const { data: compliance } = trpc.compliance.getStatus.useQuery(undefined, {
     enabled: isAuthenticated,
   });
   
@@ -32,14 +28,11 @@ export default function Affiliate() {
     );
   }
 
-  const streakDays = compliance?.streakDays || 0;
-  const isUnlocked = streakDays >= 0; // Unlock on Day 1
-  
   const { data: stats, isLoading } = trpc.affiliate.getStats.useQuery(undefined, {
-    enabled: isUnlocked,
+    enabled: isAuthenticated,
   });
   const { data: leaderboard } = trpc.affiliate.getLeaderboard.useQuery(undefined, {
-    enabled: isUnlocked,
+    enabled: isAuthenticated,
   });
 
   const copyReferralLink = () => {
@@ -61,43 +54,6 @@ export default function Affiliate() {
     );
   }
 
-  // LOCKED STATE - Show unlock prompt
-  if (!isUnlocked) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-md border-2 border-yellow-200 bg-yellow-50">
-          <CardHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <Lock className="h-12 w-12 text-yellow-600" />
-            </div>
-            <CardTitle className="text-2xl">Affiliate Program Locked</CardTitle>
-            <CardDescription>Build your streak to unlock referrals</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6 text-center">
-            <div className="bg-white p-6 rounded-lg border border-yellow-200">
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <Flame className="h-6 w-6 text-orange-500" />
-                <span className="text-3xl font-bold">{streakDays}/3</span>
-              </div>
-              <p className="text-muted-foreground">Days until you can share & earn</p>
-            </div>
-
-            <p className="text-sm text-muted-foreground">
-              Maintain a 3-day clean streak to unlock the affiliate program. This ensures you're truly committed to your protection goals before earning.
-            </p>
-
-            <Link href="/dashboard">
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
-                Back to Dashboard
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  // UNLOCKED STATE - Show affiliate dashboard
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -106,10 +62,10 @@ export default function Affiliate() {
         {/* Unlock Badge */}
         <Card className="bg-emerald-50 border-emerald-200">
           <CardContent className="flex items-center gap-3 py-4">
-            <Flame className="h-5 w-5 text-orange-500 flex-shrink-0" />
+            <div className="text-2xl">🎉</div>
             <div>
-              <p className="font-medium">🎉 You've unlocked the affiliate program!</p>
-              <p className="text-sm text-muted-foreground">Earn $2.33 per referral</p>
+              <p className="font-medium">You've unlocked the affiliate program!</p>
+              <p className="text-sm text-muted-foreground">Earn $2.33 per referral, every month</p>
             </div>
           </CardContent>
         </Card>
@@ -155,10 +111,54 @@ export default function Affiliate() {
                 <p className="text-2xl font-bold">${stats?.availableBalance?.toFixed(2) || "0.00"}</p>
               </div>
             </div>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <p className="text-sm text-muted-foreground">Referrals Converted</p>
-              <p className="text-2xl font-bold">{stats?.convertedReferrals || 0}</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-slate-50 rounded-lg">
+                <p className="text-sm text-muted-foreground">Referrals Converted</p>
+                <p className="text-2xl font-bold">{stats?.convertedReferrals || 0}</p>
+              </div>
+              <div className="p-4 bg-slate-50 rounded-lg">
+                <p className="text-sm text-muted-foreground">Conversion Rate</p>
+                <p className="text-2xl font-bold">{stats?.conversionRate || 0}%</p>
+              </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Referral Tracking */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Users className="h-5 w-5" />
+              Your Referrals
+            </CardTitle>
+            <CardDescription>Track your referral conversions - {stats?.totalReferrals || 0} total</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {stats?.referrals && stats.referrals.length > 0 ? (
+              <div className="space-y-3">
+                {stats.referrals.map((ref) => (
+                  <div key={ref.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div>
+                      <p className="font-medium">Referral #{ref.referredId}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(ref.createdAt).toLocaleDateString()}</p>
+                    </div>
+                    <div className="text-right">
+                      {ref.status === 'converted' && (
+                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-emerald-100 text-emerald-800">✓ Converted</span>
+                      )}
+                      {ref.status === 'pending' && (
+                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-yellow-100 text-yellow-800">Pending</span>
+                      )}
+                      {ref.status === 'expired' && (
+                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-800">Expired</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground py-6">No referrals yet. Share your code to get started!</p>
+            )}
           </CardContent>
         </Card>
 

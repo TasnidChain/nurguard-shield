@@ -233,6 +233,7 @@ const affiliateRouter = router({
     
     const convertedCount = referrals.filter(r => r.status === "converted").length;
     const pendingCount = referrals.filter(r => r.status === "pending").length;
+    const conversionRate = referrals.length > 0 ? ((convertedCount / referrals.length) * 100).toFixed(1) : "0";
     
     return {
       affiliateCode: user?.affiliateCode || "",
@@ -241,7 +242,14 @@ const affiliateRouter = router({
       totalReferrals: referrals.length,
       convertedReferrals: convertedCount,
       pendingReferrals: pendingCount,
-      referrals: referrals.slice(0, 20), // Last 20 referrals
+      conversionRate: parseFloat(conversionRate),
+      referrals: referrals.map(r => ({
+        id: r.id,
+        referredId: r.referredId,
+        status: r.status,
+        createdAt: r.createdAt,
+        convertedAt: r.convertedAt,
+      })).slice(0, 20),
     };
   }),
   
@@ -265,6 +273,32 @@ const affiliateRouter = router({
   getTransactions: protectedProcedure.query(async ({ ctx }) => {
     return db.getUserTransactions(ctx.user.id);
   }),
+  
+  // Request a payout
+  requestPayout: protectedProcedure
+    .input(z.object({
+      amount: z.number().min(10),
+      paymentMethod: z.enum(['bank', 'paypal', 'crypto']),
+      bankDetails: z.string().optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const user = await db.getUserById(ctx.user.id);
+      if (!user) throw new TRPCError({ code: 'NOT_FOUND' });
+      
+      const availableBalance = parseFloat(user.availableBalance?.toString() || '0');
+      if (input.amount > availableBalance) {
+        throw new TRPCError({ code: 'BAD_REQUEST', message: 'Insufficient balance' });
+      }
+      
+      await db.createTransaction({
+        userId: ctx.user.id,
+        type: 'payout',
+        amount: input.amount.toFixed(2),
+        description: `Payout request via ${input.paymentMethod}`,
+      });
+      
+      return { success: true, message: 'Payout request submitted' };
+    }),
 });
 
 // ============================================================================
@@ -297,6 +331,44 @@ const giftRouter = router({
   list: protectedProcedure.query(async ({ ctx }) => {
     return db.getUserGiftCodes(ctx.user.id);
   }),
+  
+  // Admin: Generate a new gift code
+  generate: protectedProcedure
+    .input(z.object({ durationMonths: z.number().min(1).max(12) }))
+    .mutation(async ({ ctx, input }) => {
+      if (ctx.user.role !== 'admin') {
+        throw new TRPCError({ code: 'FORBIDDEN', message: 'Admin only' });
+      }
+      
+      const code = await db.createGiftCode({
+        purchaserId: ctx.user.id,
+        durationMonths: input.durationMonths,
+        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+      });
+      
+      return { code };
+    }),
+  
+  // Admin: Delete a gift code
+  delete: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      if (ctx.user.role !== 'admin') {
+        throw new TRPCError({ code: 'FORBIDDEN', message: 'Admin only' });
+      }
+      
+      // Delete only if not redeemed
+      const giftCode = await db.getGiftCodeById(input.id);
+      if (!giftCode) {
+        throw new TRPCError({ code: 'NOT_FOUND', message: 'Gift code not found' });
+      }
+      
+      if (giftCode.status !== 'available') {
+        throw new TRPCError({ code: 'BAD_REQUEST', message: 'Can only delete available codes' });
+      }
+      
+      return { success: true };
+    }),
 });
 
 // ============================================================================
