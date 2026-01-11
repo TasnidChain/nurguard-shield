@@ -96,6 +96,7 @@
 - [x] NextDNS API wrapper (create/update/delete profiles)
 - [x] Per-user profile creation on subscription
 - [x] Device configuration endpoints (iOS/Android/Windows/Mac/Linux)
+- [x] Lemon Squeezy webhook for auto-profile creation
 - [ ] Dashboard with real-time blocking analytics
 - [ ] Subscription lifecycle automation (profile cleanup on cancel)
 - [ ] White-label branding layer (hide NextDNS, show NurGuard)

@@ -9,4 +9,5 @@ export const ENV = {
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   nextdnsApiKey: process.env.NEXTDNS_API_KEY ?? "",
   nextdnsDefaultProfileId: process.env.NEXTDNS_DEFAULT_PROFILE_ID ?? "",
+  lemonSqueezyWebhookSecret: process.env.LEMON_SQUEEZY_WEBHOOK_SECRET ?? "",
 };

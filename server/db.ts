@@ -336,3 +336,50 @@ export async function getOnboardingStatus(userId: number) {
   const result = await db.select().from(users).where(eq(users.id, userId)).limit(1);
   return result.length > 0 ? result[0] : null;
 }
+
+
+// ============================================================================
+// LEMON SQUEEZY & NEXTDNS INTEGRATION
+// ============================================================================
+export async function getUserByLemonSqueezyCustomerId(customerId: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(users).where(eq(users.lemonSqueezyCustomerId, customerId)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function updateUserNextDNSProfile(userId: number, profileId: string | null) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(users).set({
+    nextdnsProfileId: profileId,
+  }).where(eq(users.id, userId));
+}
+
+export async function createUserFromCheckout(data: {
+  email: string;
+  name: string;
+  lemonSqueezyCustomerId: string;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const user: InsertUser = {
+    openId: `lsq_${data.lemonSqueezyCustomerId}`,
+    email: data.email,
+    name: data.name,
+    loginMethod: "lemon_squeezy",
+    affiliateCode: nanoid(8).toUpperCase(),
+    lemonSqueezyCustomerId: data.lemonSqueezyCustomerId,
+    subscriptionStatus: "active",
+    subscriptionEndsAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+  };
+  
+  const result = await db.insert(users).values(user);
+  const userId = result[0].insertId as number;
+  
+  const createdUser = await getUserById(userId);
+  if (!createdUser) throw new Error("Failed to create user");
+  
+  return createdUser;
+}
