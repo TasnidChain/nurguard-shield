@@ -34,6 +34,12 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
           <Link href="/vision" className="text-gray-300 hover:text-emerald-500 transition">
             Our Vision
           </Link>
+          <Link href="/faq" className="text-gray-300 hover:text-emerald-500 transition">
+            FAQ
+          </Link>
+          <Link href="/download" className="text-gray-300 hover:text-emerald-500 transition">
+            Download
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">
@@ -75,6 +81,20 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
               className="block text-gray-300 hover:text-emerald-500 transition py-2"
             >
               Our Vision
+            </Link>
+            <Link
+              href="/faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-emerald-500 transition py-2"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/download"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-emerald-500 transition py-2"
+            >
+              Download
             </Link>
           </div>
         </div>

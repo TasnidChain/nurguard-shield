@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Brain, Lock, Heart, Users, Zap } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -327,18 +328,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-900 border-t border-gray-800 py-12 px-4 text-center text-gray-500 text-sm">
-        <div className="max-w-4xl mx-auto space-y-4">
-          <div className="flex justify-center gap-6 flex-wrap">
-            <Link href="/privacy"><span className="hover:text-emerald-400">Privacy</span></Link>
-            <Link href="/terms"><span className="hover:text-emerald-400">Terms</span></Link>
-            <Link href="/refund-policy"><span className="hover:text-emerald-400">Refund Policy</span></Link>
-            <Link href="/contact"><span className="hover:text-emerald-400">Contact</span></Link>
-          </div>
-          <p>© 2024 NurGuard. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
