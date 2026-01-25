@@ -208,3 +208,125 @@ export const foundationDonations = mysqlTable("foundation_donations", {
 
 export type FoundationDonation = typeof foundationDonations.$inferSelect;
 export type InsertFoundationDonation = typeof foundationDonations.$inferInsert;
+
+// ============================================================================
+// MOBILE API TABLES - Device registration, entitlements, blocking rules
+// ============================================================================
+
+// Devices table - Register devices for mobile app
+export const devices = mysqlTable("devices", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  platform: mysqlEnum("platform", ["android", "ios"]).notNull(),
+  deviceFingerprint: varchar("deviceFingerprint", { length: 128 }).notNull(),
+  pushToken: varchar("pushToken", { length: 255 }),
+  appVersion: varchar("appVersion", { length: 32 }).notNull(),
+  osVersion: varchar("osVersion", { length: 32 }).notNull(),
+  model: varchar("model", { length: 64 }).notNull(),
+  locale: varchar("locale", { length: 16 }).notNull(),
+  timezone: varchar("timezone", { length: 64 }).notNull(),
+  lastSeenAt: timestamp("lastSeenAt").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Device = typeof devices.$inferSelect;
+export type InsertDevice = typeof devices.$inferInsert;
+
+// Entitlements table - Normalized subscription status for mobile
+export const entitlements = mysqlTable("entitlements", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull().unique(),
+  status: mysqlEnum("status", ["active", "past_due", "canceled", "trial"]).notNull(),
+  plan: varchar("plan", { length: 32 }).default("nurguard_yearly").notNull(),
+  currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
+  source: varchar("source", { length: 32 }), // stripe, lemon, etc
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Entitlement = typeof entitlements.$inferSelect;
+export type InsertEntitlement = typeof entitlements.$inferInsert;
+
+// Rulesets table - Versioned blocking configurations
+export const rulesets = mysqlTable("rulesets", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  platform: mysqlEnum("platform", ["android", "ios", "all"]).notNull(),
+  version: int("version").notNull(),
+  isActive: boolean("isActive").default(true).notNull(),
+  notes: varchar("notes", { length: 255 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Ruleset = typeof rulesets.$inferSelect;
+export type InsertRuleset = typeof rulesets.$inferInsert;
+
+// Ruleset items table - Individual blocking rules (apps, domains, categories)
+export const rulesetItems = mysqlTable("ruleset_items", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  rulesetId: varchar("rulesetId", { length: 26 }).notNull(),
+  type: mysqlEnum("type", ["app", "domain", "category"]).notNull(),
+  action: mysqlEnum("action", ["block", "allow"]).notNull(),
+  key: varchar("key", { length: 255 }).notNull(), // package name, domain, or category
+  metaJson: json("metaJson"), // Additional metadata
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type RulesetItem = typeof rulesetItems.$inferSelect;
+export type InsertRulesetItem = typeof rulesetItems.$inferInsert;
+
+// Time budgets table - Daily usage limits per category
+export const timeBudgets = mysqlTable("time_budgets", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  category: mysqlEnum("category", ["social", "entertainment", "learning", "deen"]).notNull(),
+  dailyLimitSeconds: int("dailyLimitSeconds").notNull(),
+  isEnabled: boolean("isEnabled").default(true).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type TimeBudget = typeof timeBudgets.$inferSelect;
+export type InsertTimeBudget = typeof timeBudgets.$inferInsert;
+
+// Sacred hours table - Time windows for automatic blocking
+export const sacredHours = mysqlTable("sacred_hours", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  label: varchar("label", { length: 32 }).notNull(), // fajr, work, isha, custom
+  daysMask: int("daysMask").notNull(), // Bitmask for days of week (0-127)
+  startMinute: int("startMinute").notNull(), // 0-1439
+  endMinute: int("endMinute").notNull(), // 0-1439
+  timezone: varchar("timezone", { length: 64 }).notNull(),
+  isEnabled: boolean("isEnabled").default(true).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SacredHour = typeof sacredHours.$inferSelect;
+export type InsertSacredHour = typeof sacredHours.$inferInsert;
+
+// Daily reports table - Aggregated daily metrics
+export const dailyReports = mysqlTable("daily_reports", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  deviceId: varchar("deviceId", { length: 26 }),
+  date: timestamp("date").notNull(),
+  blockedAttemptsTotal: int("blockedAttemptsTotal").default(0).notNull(),
+  overridesTotal: int("overridesTotal").default(0).notNull(),
+  timeSavedSeconds: int("timeSavedSeconds").default(0).notNull(),
+  categoryUsedJson: json("categoryUsedJson"), // {"social": 2100, "entertainment": 900}
+  triggeredHoursJson: json("triggeredHoursJson"), // {"0": 2, "1": 0, ..., "23": 5}
+  topAppsJson: json("topAppsJson"), // Optional
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type DailyReport = typeof dailyReports.$inferSelect;
+export type InsertDailyReport = typeof dailyReports.$inferInsert;
+
+// Device overrides table - Device-specific configuration overrides
+export const deviceOverrides = mysqlTable("device_overrides", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  deviceId: varchar("deviceId", { length: 26 }).notNull().unique(),
+  overridesJson: json("overridesJson").notNull(), // {"delay_seconds": 15, "strict_mode": true}
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type DeviceOverride = typeof deviceOverrides.$inferSelect;
+export type InsertDeviceOverride = typeof deviceOverrides.$inferInsert;

@@ -29,6 +29,13 @@
       "when": 1768072034166,
       "tag": "0003_flaky_leech",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1769354363106,
+      "tag": "0004_gray_firebrand",
+      "breakpoints": true
     }
   ]
 }

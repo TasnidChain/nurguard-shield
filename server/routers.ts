@@ -8,6 +8,7 @@ import * as db from "./db";
 import { nanoid } from "nanoid";
 import { onboardingRouter } from "./onboardingRouter";
 import { complianceRouter } from "./complianceRouter";
+import { mobileRouter } from "./routers/mobile";
 
 // ============================================================================
 // SUBSCRIPTION ROUTER
@@ -433,6 +434,7 @@ export const appRouter = router({
   compliance: complianceRouter,
   foundation: foundationRouter,
   dns: dnsRouter,
+  mobile: mobileRouter,
 });
 
 export type AppRouter = typeof appRouter;
