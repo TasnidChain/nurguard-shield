@@ -25,20 +25,14 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm">
-          <Link href="/affiliate-public" className="text-gray-300 hover:text-emerald-500 transition">
-            Earn 30%
-          </Link>
-          <Link href="/economy" className="text-gray-300 hover:text-emerald-500 transition">
-            Our Model
-          </Link>
-          <Link href="/vision" className="text-gray-300 hover:text-emerald-500 transition">
-            Our Vision
+          <Link href="/how-it-works" className="text-gray-300 hover:text-emerald-500 transition">
+            How It Works
           </Link>
           <Link href="/faq" className="text-gray-300 hover:text-emerald-500 transition">
             FAQ
           </Link>
-          <Link href="/download" className="text-gray-300 hover:text-emerald-500 transition">
-            Download
+          <Link href="/pricing" className="text-gray-300 hover:text-emerald-500 transition">
+            Pricing
           </Link>
         </div>
 
@@ -62,25 +56,11 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
         <div className={`md:hidden ${mobileBg} border-t ${borderColor} py-4 px-4`}>
           <div className="space-y-3">
             <Link
-              href="/affiliate-public"
+              href="/how-it-works"
               onClick={() => setMobileMenuOpen(false)}
               className="block text-gray-300 hover:text-emerald-500 transition py-2"
             >
-              Earn 30%
-            </Link>
-            <Link
-              href="/economy"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-gray-300 hover:text-emerald-500 transition py-2"
-            >
-              Our Model
-            </Link>
-            <Link
-              href="/vision"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-gray-300 hover:text-emerald-500 transition py-2"
-            >
-              Our Vision
+              How It Works
             </Link>
             <Link
               href="/faq"
@@ -90,11 +70,11 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
               FAQ
             </Link>
             <Link
-              href="/download"
+              href="/pricing"
               onClick={() => setMobileMenuOpen(false)}
               className="block text-gray-300 hover:text-emerald-500 transition py-2"
             >
-              Download
+              Pricing
             </Link>
           </div>
         </div>

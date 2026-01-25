@@ -44,26 +44,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Community */}
+          {/* Trust */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Community</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/affiliate-public" className="text-gray-400 hover:text-emerald-500 transition">
-                  Affiliate Program
-                </Link>
-              </li>
-              <li>
-                <Link href="/vision" className="text-gray-400 hover:text-emerald-500 transition">
-                  Our Vision
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-400 hover:text-emerald-500 transition">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            <h3 className="font-semibold text-white mb-4">Trust</h3>
+            <div className="space-y-3 text-sm text-gray-400">
+              <div>
+                <p className="font-semibold text-white mb-1">Privacy First</p>
+                <p className="text-xs">NurGuard does not log, sell, or store your browsing history. DNS filtering happens securely.</p>
+              </div>
+            </div>
           </div>
 
           {/* Legal */}
@@ -81,8 +70,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/refund-policy" className="text-gray-400 hover:text-emerald-500 transition">
-                  Refund Policy
+                <Link href="/contact" className="text-gray-400 hover:text-emerald-500 transition">
+                  Contact
                 </Link>
               </li>
             </ul>

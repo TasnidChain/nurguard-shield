@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import TrustQuotes from "@/components/TrustQuotes";
 import { ArrowRight, Pause, Shield, Clock, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -152,6 +153,9 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
+      {/* Trust Quotes */}
+      <TrustQuotes />
 
       {/* Pricing Preview */}
       <section className="container max-w-2xl mx-auto px-4 py-20 text-center space-y-8">
