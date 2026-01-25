@@ -23,6 +23,22 @@ export default function HowItWorks() {
         </p>
       </section>
 
+      {/* Video Explainer */}
+      <section className="container max-w-3xl mx-auto px-4 py-8">
+        <div className="rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/20 border border-emerald-500/30">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto"
+          >
+            <source src="/dns-filtering-green2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p className="text-center text-slate-400 text-sm mt-4">DNS filtering protects all your devices at the network level</p>
+      </section>
+
       {/* Core Idea */}
       <section className="container max-w-3xl mx-auto px-4 py-16 space-y-8">
         <div className="space-y-4">
