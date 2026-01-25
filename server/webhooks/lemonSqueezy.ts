@@ -109,6 +109,53 @@ export async function handleLemonSqueezyWebhook(
       }
     }
 
+    // Update entitlements table for mobile app verification
+    const entitlementId = `ent_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const subscriptionEndDate = new Date();
+    subscriptionEndDate.setFullYear(subscriptionEndDate.getFullYear() + 1); // 1 year from now
+
+    try {
+      const dbInstance = await db.getDb();
+      if (dbInstance) {
+        const { entitlements } = await import("../../drizzle/schema");
+        const { eq } = await import("drizzle-orm");
+
+        // Check if entitlement exists
+        const existing = await dbInstance
+          .select()
+          .from(entitlements)
+          .where(eq(entitlements.userId, user.id))
+          .limit(1);
+
+        if (existing.length > 0) {
+          // Update existing entitlement
+          await dbInstance
+            .update(entitlements)
+            .set({
+              status: "active",
+              plan: "nurguard_yearly",
+              currentPeriodEnd: subscriptionEndDate,
+              source: "lemon",
+              updatedAt: new Date(),
+            })
+            .where(eq(entitlements.userId, user.id));
+        } else {
+          // Create new entitlement
+          await dbInstance.insert(entitlements).values({
+            id: entitlementId,
+            userId: user.id,
+            status: "active",
+            plan: "nurguard_yearly",
+            currentPeriodEnd: subscriptionEndDate,
+            source: "lemon",
+          });
+        }
+      }
+    } catch (entitlementError) {
+      console.warn("Failed to update entitlements:", entitlementError);
+      // Don't fail the webhook, just log the warning
+    }
+
     // Check if user already has a NextDNS profile
     if (user.nextdnsProfileId) {
       console.log(`User ${user.id} already has NextDNS profile`);
@@ -123,8 +170,24 @@ export async function handleLemonSqueezyWebhook(
         userName || userEmail || "NurGuard User"
       );
 
-      // Update user with NextDNS profile ID
+      // Update user with NextDNS profile ID and subscription status
       await db.updateUserNextDNSProfile(user.id, profileId);
+      
+      // Update user subscription status
+      const subscriptionEndDate = new Date();
+      subscriptionEndDate.setFullYear(subscriptionEndDate.getFullYear() + 1);
+      const dbInstance = await db.getDb();
+      if (dbInstance) {
+        const { users } = await import("../../drizzle/schema");
+        const { eq } = await import("drizzle-orm");
+        await dbInstance
+          .update(users)
+          .set({
+            subscriptionStatus: "active",
+            subscriptionEndsAt: subscriptionEndDate,
+          })
+          .where(eq(users.id, user.id));
+      }
 
       // Log transaction
       await db.createTransaction({

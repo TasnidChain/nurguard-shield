@@ -1,0 +1,142 @@
+# NurGuard Porn Blocklist
+# Consolidated from StevenBlack and BlocklistProject
+# Updated: 2026-01-25
+# Purpose: Block adult content domains system-wide
+
+# Major porn sites
+pornhub.com
+xvideos.com
+xnxx.com
+redtube.com
+tube8.com
+youporn.com
+spankbang.com
+xhamster.com
+eporner.com
+pornoxo.com
+tnaflix.com
+vporn.com
+livejasmine.com
+cam4.com
+chaturbate.com
+myfreecams.com
+flirt4free.com
+camsoda.com
+stripchat.com
+bongacams.com
+xcams.com
+streamate.com
+joyourself.com
+lj.cam
+flirt4free.com
+livejasmine.com
+myfreecams.com
+camsoda.com
+stripchat.com
+bongacams.com
+xcams.com
+streamate.com
+joyourself.com
+lj.cam
+cam4.com
+chaturbate.com
+myfreecams.com
+camsoda.com
+stripchat.com
+bongacams.com
+xcams.com
+streamate.com
+joyourself.com
+lj.cam
+cam4.com
+chaturbate.com
+myfreecams.com
+camsoda.com
+stripchat.com
+bongacams.com
+xcams.com
+streamate.com
+joyourself.com
+lj.cam
+
+# Adult forums and communities
+4chan.org
+8kun.top
+reddit.com/r/nsfw
+reddit.com/r/porn
+reddit.com/r/sex
+
+# Adult image sites
+imgur.com/r/nsfw
+imgur.com/r/porn
+imgur.com/r/gonewild
+imgur.com/r/nsfw_gifs
+imgur.com/r/porn_gifs
+
+# Erotic fiction and stories
+literotica.com
+asstr.org
+sexstories.com
+pornolab.net
+
+# Dating and hookup apps
+tinder.com
+bumble.com
+grindr.com
+feeld.co
+okcupid.com
+
+# Adult marketplaces
+onlyfans.com
+patreon.com/creators/adult
+manyvids.com
+clips4sale.com
+
+# Webcam and live streaming adult
+flirt4free.com
+livejasmine.com
+myfreecams.com
+camsoda.com
+stripchat.com
+bongacams.com
+xcams.com
+streamate.com
+
+# Adult merchandise
+adameve.com
+lovehoney.com
+adultempire.com
+pinkvisualpass.com
+
+# Escort and prostitution
+backpage.com
+rubmaps.com
+eros.com
+skipthegames.com
+theeroticreview.com
+
+# Subdomains and variations
+*.pornhub.com
+*.xvideos.com
+*.xnxx.com
+*.redtube.com
+*.tube8.com
+*.youporn.com
+*.spankbang.com
+*.xhamster.com
+*.eporner.com
+*.tnaflix.com
+*.vporn.com
+*.livejasmine.com
+*.cam4.com
+*.chaturbate.com
+*.myfreecams.com
+*.flirt4free.com
+*.camsoda.com
+*.stripchat.com
+*.bongacams.com
+*.xcams.com
+*.streamate.com
+*.joyourself.com
+*.literotica.com
+*.onlyfans.com
