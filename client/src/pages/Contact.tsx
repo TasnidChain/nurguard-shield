@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageSquare, Loader2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -40,124 +42,145 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <Navigation />
 
-      <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4 text-center">Get in Touch</h1>
-          <p className="text-gray-400 text-center mb-12">
+      <section className="container max-w-3xl mx-auto px-4 py-20">
+        <div className="text-center mb-12 space-y-4">
+          <h1 className="text-4xl font-bold text-white">Get in Touch</h1>
+          <p className="text-slate-300">
             Have questions or feedback? We'd love to hear from you.
           </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* CONTACT FORM */}
-            <Card className="bg-gray-900 border-gray-800">
-              <CardContent className="pt-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-gray-300 mb-2 block">
-                      Name
-                    </Label>
-                    <Input
-                      id="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name"
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Contact Info */}
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-8 space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Email</h3>
+                <a href="mailto:support@nurguard.app" className="text-emerald-400 hover:text-emerald-300">
+                  support@nurguard.app
+                </a>
+              </div>
 
-                  <div>
-                    <Label htmlFor="email" className="text-gray-300 mb-2 block">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Response Time</h3>
+                <p className="text-slate-300">We typically respond within 24 hours</p>
+              </div>
 
-                  <div>
-                    <Label htmlFor="message" className="text-gray-300 mb-2 block">
-                      Message
-                    </Label>
-                    <textarea
-                      id="message"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us what's on your mind..."
-                      rows={6}
-                      className="w-full bg-gray-800 border border-gray-700 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    />
-                  </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">What We Help With</h3>
+                <ul className="space-y-2 text-slate-300">
+                  <li>• Setup and installation help</li>
+                  <li>• Technical issues</li>
+                  <li>• Billing questions</li>
+                  <li>• Feature requests</li>
+                  <li>• General inquiries</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
 
-                  <Button
-                    type="submit"
+          {/* Contact Form */}
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-8">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Label htmlFor="name" className="text-slate-300">Name</Label>
+                  <Input
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    className="bg-slate-900 border-slate-700 text-white placeholder-slate-500"
                     disabled={isSubmitting}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <MessageSquare className="w-4 h-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                  />
+                </div>
 
-            {/* CONTACT INFO */}
-            <div className="space-y-8">
-              <Card className="bg-gray-900 border-gray-800">
-                <CardContent className="pt-8">
-                  <div className="flex gap-4">
-                    <Mail className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-bold mb-2">Email</h3>
-                      <p className="text-gray-400">support@nurguard.app</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                <div>
+                  <Label htmlFor="email" className="text-slate-300">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    className="bg-slate-900 border-slate-700 text-white placeholder-slate-500"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <Card className="bg-gray-900 border-gray-800">
-                <CardContent className="pt-8">
-                  <h3 className="font-bold mb-4">Response Time</h3>
-                  <p className="text-gray-400">
-                    We typically respond to emails within 24 hours during business days.
-                  </p>
-                </CardContent>
-              </Card>
+                <div>
+                  <Label htmlFor="message" className="text-slate-300">Message</Label>
+                  <Textarea
+                    id="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Tell us what's on your mind..."
+                    className="bg-slate-900 border-slate-700 text-white placeholder-slate-500 resize-none"
+                    rows={5}
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <Card className="bg-gray-900 border-gray-800">
-                <CardContent className="pt-8">
-                  <h3 className="font-bold mb-4">Common Questions</h3>
-                  <ul className="space-y-2 text-gray-400 text-sm">
-                    <li>• How do I install the app?</li>
-                    <li>• How do I cancel my subscription?</li>
-                    <li>• Is there a refund policy?</li>
-                    <li>• How is my data protected?</li>
-                  </ul>
-                  <p className="text-gray-500 text-xs mt-4">
-                    Check our FAQ or other pages for quick answers.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="h-4 w-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* FAQ */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-white">Quick Answers</h2>
+
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-6 space-y-2">
+              <h3 className="font-bold text-white">How long does setup take?</h3>
+              <p className="text-slate-300">Usually 5-10 minutes. Check our Setup Guide for step-by-step instructions.</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-6 space-y-2">
+              <h3 className="font-bold text-white">Can I get a refund?</h3>
+              <p className="text-slate-300">Yes. 30-day money-back guarantee, no questions asked.</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-6 space-y-2">
+              <h3 className="font-bold text-white">Does it work on all devices?</h3>
+              <p className="text-slate-300">Yes. One subscription covers phones, tablets, laptops, and computers.</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-6 space-y-2">
+              <h3 className="font-bold text-white">Do you track my data?</h3>
+              <p className="text-slate-300">No. We don't track browsing, sell data, or use ads. See our Privacy Policy for details.</p>
+            </CardContent>
+          </Card>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

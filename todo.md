@@ -128,3 +128,38 @@
 - [ ] Create demo video (16:9 and 9:16 versions) - user will provide
 - [ ] Test all pages with new pricing and copy
 - [ ] Final checkpoint and launch prep
+
+
+## MAJOR REWRITE - COMPLETE (Jan 25, 2026)
+
+### Pages Rebuilt (All 9 Required)
+- [x] Home (/) - Landing with hero, features, pricing, affiliate, trust
+- [x] How It Works (/how-it-works) - DNS explanation, 4-step process
+- [x] Pricing (/pricing) - $33/year annual-only with features
+- [x] Setup (/setup) - Platform-specific DNS instructions (iOS/Android/Windows/Mac)
+- [x] Earn (/earn) - Affiliate 30% recurring commission math
+- [x] Support (/support) - Comprehensive FAQ + contact
+- [x] Privacy (/privacy) - Data practices updated
+- [x] Terms (/terms) - Legal with $33/year subscription
+- [x] Contact (/contact) - Contact form + quick answers
+- [x] App (/app) - Dashboard for logged-in users
+
+### Cleanup & Fixes
+- [x] Deleted 14 old pages (AffiliatePublic, Blocking, CheckoutSuccess, ComponentShowcase, DashboardV2, DeviceSetup, Download, NextDNSConnect, Onboarding, OverflowEconomy, ProfileSelect, SetupDNS, VisionPage, NotFound)
+- [x] Updated App.tsx routing to clean 9-page structure
+- [x] Fixed TypeScript errors (removed Onboarding logic)
+- [x] Applied dark theme with emerald accents consistently
+- [x] Added Navigation and Footer to all pages
+- [x] Verified $33/year pricing everywhere
+- [x] No old pricing ($7.77/month) remains
+- [x] Dev server running, no build errors
+
+### Still TODO Before Launch
+- [ ] Integrate Lemon Squeezy checkout API (payment processing)
+- [ ] Test payment flow end-to-end
+- [ ] Configure NextDNS account (dns.nurguard.app CNAME)
+- [ ] Set up email service for confirmations/receipts
+- [ ] Bind custom domain (NurGuard.com)
+- [ ] Final QA testing on all pages
+- [ ] Create demo video (user will provide)
+- [ ] Save checkpoint and prepare for launch
