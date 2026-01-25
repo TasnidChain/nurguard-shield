@@ -24,6 +24,7 @@ import Setup from "./pages/Setup";
 import Earn from "./pages/Earn";
 import AppPage from "./pages/App";
 import Support from "./pages/Support";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
 
 function Router() {
   const { isAuthenticated, loading } = useAuth();
@@ -52,6 +53,7 @@ function Router() {
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />
       <Route path="/faq" component={FAQ} />
+      <Route path="/checkout/success" component={CheckoutSuccess} />
 
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/subscribe" component={Subscribe} />

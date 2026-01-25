@@ -37,9 +37,13 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
         </div>
 
         <div className="flex items-center gap-4">
-          {isAuthenticated && (
+          {isAuthenticated ? (
             <Link href="/dashboard">
               <Button className="bg-emerald-600 hover:bg-emerald-700">Dashboard</Button>
+            </Link>
+          ) : (
+            <Link href="/pricing">
+              <Button className="bg-emerald-600 hover:bg-emerald-700">Get Started</Button>
             </Link>
           )}
           <button

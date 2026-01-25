@@ -270,7 +270,7 @@ export default function HowItWorks() {
 
         <Link href="/pricing">
           <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg px-8">
-            👉 Activate NurGuard — $33 / Year
+            Activate NurGuard — $33/year
           </Button>
         </Link>
 

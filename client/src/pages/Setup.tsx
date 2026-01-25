@@ -169,6 +169,30 @@ export default function Setup() {
               </CardContent>
             </Card>
 
+            {/* Step 5: DNS Setup */}
+            <Card className="bg-slate-800 border-slate-700">
+              <CardContent className="pt-8 space-y-4">
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                    5
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">Enable DNS protection (optional)</h3>
+                    <p className="text-slate-300 mb-4">
+                      For extra web filtering, add these DNS servers to your phone settings:
+                    </p>
+                    <div className="bg-slate-900 rounded-lg p-4 space-y-2 font-mono text-sm">
+                      <p className="text-emerald-400">Primary: 45.90.28.0#383b61</p>
+                      <p className="text-emerald-400">Secondary: 45.90.30.0#383b61</p>
+                    </div>
+                    <p className="text-slate-400 text-sm mt-3">
+                      Go to Settings → Network & Internet → Private DNS → Enter hostname
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Done */}
             <Card className="bg-emerald-950/50 border-emerald-700/50">
               <CardContent className="pt-8 space-y-4">
@@ -242,12 +266,35 @@ export default function Setup() {
               </CardContent>
             </Card>
 
-            {/* Step 3: Setup */}
+            {/* Step 3: DNS Setup */}
             <Card className="bg-slate-800 border-slate-700">
               <CardContent className="pt-8 space-y-4">
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
                     3
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">Add DNS protection</h3>
+                    <p className="text-slate-300 mb-4">
+                      Go to Settings → General → VPN & Device Management → DNS and add:
+                    </p>
+                    <div className="bg-slate-900 rounded-lg p-4 space-y-2 font-mono text-sm">
+                      <p className="text-emerald-400">383b61.dns.nextdns.io</p>
+                    </div>
+                    <p className="text-slate-400 text-sm mt-3">
+                      This blocks harmful websites across all apps and browsers.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 4: Setup */}
+            <Card className="bg-slate-800 border-slate-700">
+              <CardContent className="pt-8 space-y-4">
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                    4
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-white mb-2">Complete setup</h3>
