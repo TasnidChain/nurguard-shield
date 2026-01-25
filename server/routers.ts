@@ -9,6 +9,7 @@ import { nanoid } from "nanoid";
 import { onboardingRouter } from "./onboardingRouter";
 import { complianceRouter } from "./complianceRouter";
 import { mobileRouter } from "./routers/mobile";
+import { downloadsRouter } from "./routers/downloads";
 
 // ============================================================================
 // SUBSCRIPTION ROUTER
@@ -435,6 +436,7 @@ export const appRouter = router({
   foundation: foundationRouter,
   dns: dnsRouter,
   mobile: mobileRouter,
+  downloads: downloadsRouter,
 });
 
 export type AppRouter = typeof appRouter;
