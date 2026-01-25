@@ -150,6 +150,61 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Affiliate CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-gray-900">
+        <div className="container max-w-4xl mx-auto">
+          <div className="relative group">
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-300"></div>
+
+            {/* Card */}
+            <div className="relative bg-gray-950 border border-emerald-500/50 rounded-3xl p-12 space-y-6">
+              <div className="text-center space-y-4">
+                <div className="inline-block px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
+                  <p className="text-sm text-emerald-400 font-semibold">EARN BY PROTECTING OTHERS</p>
+                </div>
+                <h2 className="text-4xl font-bold">Help 1,000 people. Earn $11,000.</h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  Get 30% recurring commission for every person you help protect.
+                </p>
+              </div>
+
+              {/* Math */}
+              <div className="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-6 space-y-3">
+                <div className="flex items-center justify-between text-gray-300">
+                  <span>1 signup</span>
+                  <span className="font-mono text-emerald-400">= $9.90/year</span>
+                </div>
+                <div className="flex items-center justify-between text-gray-300">
+                  <span>100 signups</span>
+                  <span className="font-mono text-emerald-400">= $990/year</span>
+                </div>
+                <div className="flex items-center justify-between text-white font-semibold text-lg">
+                  <span>1,000 signups</span>
+                  <span className="font-mono text-emerald-400">= $9,900/year</span>
+                </div>
+                <p className="text-sm text-gray-400 pt-2 border-t border-gray-800">
+                  Recurring. As long as they stay protected, you earn.
+                </p>
+              </div>
+
+              {/* CTA */}
+              <div className="text-center space-y-4">
+                <a href="/earn">
+                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg hover:shadow-emerald-500/50 transition-all hover:scale-105">
+                    Learn More About Affiliate Program
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </a>
+                <p className="text-sm text-gray-400">
+                  No cap. No tiers. Just 30% of every subscription you help create.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container max-w-4xl mx-auto text-center space-y-8">

@@ -163,3 +163,10 @@
 - [ ] Final QA testing on all pages
 - [ ] Create demo video (user will provide)
 - [ ] Save checkpoint and prepare for launch
+
+## New Features (Jan 25, 2026 - Post-Rewrite)
+
+- [x] Add affiliate marketing CTA to pricing page (30% recurring commission, $11k per 1000 signups)
+- [x] Add app-level time limits feature (like ScreenZen) to Android app
+- [x] Add notification blocking during time limits
+- [ ] Test time limit enforcement on Android
