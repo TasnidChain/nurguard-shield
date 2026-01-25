@@ -301,75 +301,7 @@ const affiliateRouter = router({
     }),
 });
 
-// ============================================================================
-// GIFT ROUTER
-// ============================================================================
-const giftRouter = router({
-  // Purchase a gift code
-  purchase: protectedProcedure
-    .input(z.object({ durationMonths: z.number().min(1).max(12) }))
-    .mutation(async ({ ctx, input }) => {
-      // In production, this would integrate with Lemon Squeezy
-      // For now, create the gift code directly
-      const code = await db.createGiftCode({
-        purchaserId: ctx.user.id,
-        durationMonths: input.durationMonths,
-        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year expiry
-      });
-      
-      await db.createTransaction({
-        userId: ctx.user.id,
-        type: "gift_purchase",
-        amount: (7.77 * input.durationMonths).toFixed(2),
-        description: `Purchased ${input.durationMonths} month gift code`,
-      });
-      
-      return { code };
-    }),
-    
-  // Get user's purchased gift codes
-  list: protectedProcedure.query(async ({ ctx }) => {
-    return db.getUserGiftCodes(ctx.user.id);
-  }),
-  
-  // Admin: Generate a new gift code
-  generate: protectedProcedure
-    .input(z.object({ durationMonths: z.number().min(1).max(12) }))
-    .mutation(async ({ ctx, input }) => {
-      if (ctx.user.role !== 'admin') {
-        throw new TRPCError({ code: 'FORBIDDEN', message: 'Admin only' });
-      }
-      
-      const code = await db.createGiftCode({
-        purchaserId: ctx.user.id,
-        durationMonths: input.durationMonths,
-        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-      });
-      
-      return { code };
-    }),
-  
-  // Admin: Delete a gift code
-  delete: protectedProcedure
-    .input(z.object({ id: z.number() }))
-    .mutation(async ({ ctx, input }) => {
-      if (ctx.user.role !== 'admin') {
-        throw new TRPCError({ code: 'FORBIDDEN', message: 'Admin only' });
-      }
-      
-      // Delete only if not redeemed
-      const giftCode = await db.getGiftCodeById(input.id);
-      if (!giftCode) {
-        throw new TRPCError({ code: 'NOT_FOUND', message: 'Gift code not found' });
-      }
-      
-      if (giftCode.status !== 'available') {
-        throw new TRPCError({ code: 'BAD_REQUEST', message: 'Can only delete available codes' });
-      }
-      
-      return { success: true };
-    }),
-});
+// Gift codes removed for $33/year launch (annual-only, no gift codes)
 
 // ============================================================================
 // DNS VERIFICATION ROUTER
@@ -497,11 +429,9 @@ export const appRouter = router({
   blocking: blockingRouter,
   analytics: analyticsRouter,
   affiliate: affiliateRouter,
-  gift: giftRouter,
   onboarding: onboardingRouter,
   compliance: complianceRouter,
   foundation: foundationRouter,
-  admin: adminGiftRouter,
   dns: dnsRouter,
 });
 

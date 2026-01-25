@@ -1,11 +1,11 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Users, DollarSign, Copy, Trophy, Loader2, Shield } from "lucide-react";
+import { Users, DollarSign, Copy, Loader2, Shield, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 import Navigation from "@/components/Navigation";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Affiliate() {
   const { isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
@@ -18,10 +18,10 @@ export default function Affiliate() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <Shield className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-          <h1 className="text-2xl font-bold mb-2">Upgrade to Shield</h1>
-          <p className="text-muted-foreground mb-6">Subscribe to access affiliate program</p>
+          <h1 className="text-2xl font-bold mb-2">Upgrade to NurGuard</h1>
+          <p className="text-muted-foreground mb-6">Subscribe to access the affiliate program</p>
           <Link href="/subscribe">
-            <Button>Subscribe Now</Button>
+            <Button>Subscribe Now - $33/year</Button>
           </Link>
         </div>
       </div>
@@ -31,19 +31,11 @@ export default function Affiliate() {
   const { data: stats, isLoading } = trpc.affiliate.getStats.useQuery(undefined, {
     enabled: isAuthenticated,
   });
-  const { data: leaderboard } = trpc.affiliate.getLeaderboard.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
 
   const copyReferralLink = () => {
     const link = `${window.location.origin}/subscribe?ref=${stats?.affiliateCode}`;
     navigator.clipboard.writeText(link);
-    toast.success("Referral link copied!");
-  };
-
-  const copyCode = () => {
-    navigator.clipboard.writeText(stats?.affiliateCode || "");
-    toast.success("Code copied!");
+    toast.success("Referral link copied to clipboard!");
   };
 
   if (isLoading) {
@@ -58,140 +50,133 @@ export default function Affiliate() {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <main className="container py-6 space-y-6">
-        {/* Unlock Badge */}
-        <Card className="bg-emerald-50 border-emerald-200">
-          <CardContent className="flex items-center gap-3 py-4">
-            <div className="text-2xl">🎉</div>
-            <div>
-              <p className="font-medium">You've unlocked the affiliate program!</p>
-              <p className="text-sm text-muted-foreground">Earn $2.33 per referral, every month</p>
-            </div>
-          </CardContent>
-        </Card>
+      <main className="container max-w-2xl py-12 space-y-8">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <h1 className="text-4xl font-bold">Earn While Protecting Others</h1>
+          <p className="text-lg text-muted-foreground">Share NurGuard and earn 30% recurring commission</p>
+        </div>
 
-        {/* Your Code */}
-        <Card>
+        {/* Earnings Card */}
+        <Card className="border-2 border-emerald-200 bg-emerald-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
-              Your Referral Code
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="p-4 bg-slate-100 rounded-lg flex items-center justify-between">
-              <code className="font-mono font-bold text-lg">{stats?.affiliateCode}</code>
-              <Button variant="outline" size="sm" onClick={copyCode}>
-                <Copy className="h-4 w-4 mr-2" />
-                Copy
-              </Button>
-            </div>
-            <Button onClick={copyReferralLink} className="w-full bg-emerald-600 hover:bg-emerald-700">
-              Copy Full Referral Link
-            </Button>
-          </CardContent>
-        </Card>
-
-        {/* Earnings */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5" />
+              <DollarSign className="h-6 w-6 text-emerald-600" />
               Your Earnings
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-muted-foreground">Total Earned</p>
-                <p className="text-2xl font-bold">${stats?.totalEarnings?.toFixed(2) || "0.00"}</p>
+              <div className="bg-white rounded-lg p-4 border border-emerald-200">
+                <p className="text-sm text-muted-foreground">Total Earnings</p>
+                <p className="text-3xl font-bold text-emerald-600">${(stats?.totalEarnings || 0).toFixed(2)}</p>
               </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-muted-foreground">Available Balance</p>
-                <p className="text-2xl font-bold">${stats?.availableBalance?.toFixed(2) || "0.00"}</p>
+              <div className="bg-white rounded-lg p-4 border border-emerald-200">
+                <p className="text-sm text-muted-foreground">Pending Balance</p>
+                <p className="text-3xl font-bold text-emerald-600">${(stats?.availableBalance || 0).toFixed(2)}</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-muted-foreground">Referrals Converted</p>
-                <p className="text-2xl font-bold">{stats?.convertedReferrals || 0}</p>
-              </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-muted-foreground">Conversion Rate</p>
-                <p className="text-2xl font-bold">{stats?.conversionRate || 0}%</p>
+            <div className="bg-white rounded-lg p-4 border border-emerald-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground">Converted Referrals</p>
+                  <p className="text-2xl font-bold">{stats?.convertedReferrals || 0}</p>
+                </div>
+                <TrendingUp className="h-8 w-8 text-emerald-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Referral Tracking */}
+        {/* Referral Link Card */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Users className="h-5 w-5" />
-              Your Referrals
+              Your Referral Link
             </CardTitle>
-            <CardDescription>Track your referral conversions - {stats?.totalReferrals || 0} total</CardDescription>
+            <CardDescription>Share this link to earn 30% of every referral's subscription</CardDescription>
           </CardHeader>
-          <CardContent>
-            {stats?.referrals && stats.referrals.length > 0 ? (
-              <div className="space-y-3">
-                {stats.referrals.map((ref) => (
-                  <div key={ref.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                    <div>
-                      <p className="font-medium">Referral #{ref.referredId}</p>
-                      <p className="text-xs text-muted-foreground">{new Date(ref.createdAt).toLocaleDateString()}</p>
-                    </div>
-                    <div className="text-right">
-                      {ref.status === 'converted' && (
-                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-emerald-100 text-emerald-800">✓ Converted</span>
-                      )}
-                      {ref.status === 'pending' && (
-                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-yellow-100 text-yellow-800">Pending</span>
-                      )}
-                      {ref.status === 'expired' && (
-                        <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-800">Expired</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-muted-foreground py-6">No referrals yet. Share your code to get started!</p>
-            )}
+          <CardContent className="space-y-4">
+            <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 font-mono text-sm break-all">
+              {`${window.location.origin}/subscribe?ref=${stats?.affiliateCode}`}
+            </div>
+            <Button onClick={copyReferralLink} className="w-full" size="lg">
+              <Copy className="h-4 w-4 mr-2" />
+              Copy Link
+            </Button>
           </CardContent>
         </Card>
 
-        {/* Leaderboard */}
+        {/* How It Works */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Trophy className="h-5 w-5" />
-              Top Affiliates
-            </CardTitle>
-            <CardDescription>This month's top earners</CardDescription>
+            <CardTitle>How It Works</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-4">
             <div className="space-y-3">
-              {leaderboard && leaderboard.length > 0 ? (
-                leaderboard.map((affiliate, idx) => (
-                  <div key={affiliate.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-muted-foreground">#{idx + 1}</span>
-                      <div>
-                        <p className="font-medium">{affiliate.name || "Anonymous"}</p>
-                        <p className="text-xs text-muted-foreground">{affiliate.affiliateCode}</p>
-                      </div>
-                    </div>
-                    <p className="font-bold text-emerald-600">${(Number(affiliate.affiliateEarnings) || 0).toFixed(2)}</p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-center text-muted-foreground py-6">No affiliates yet</p>
-              )}
+              <div className="flex gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">1</div>
+                <div>
+                  <p className="font-medium">Share Your Link</p>
+                  <p className="text-sm text-muted-foreground">Copy and share your unique referral link with friends</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">2</div>
+                <div>
+                  <p className="font-medium">They Subscribe</p>
+                  <p className="text-sm text-muted-foreground">When they subscribe via your link, you earn 30% commission</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">3</div>
+                <div>
+                  <p className="font-medium">Earn Recurring</p>
+                  <p className="text-sm text-muted-foreground">You earn 30% every year they stay subscribed</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">4</div>
+                <div>
+                  <p className="font-medium">Request Payout</p>
+                  <p className="text-sm text-muted-foreground">Withdraw your earnings monthly or quarterly</p>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
+
+        {/* Payout Info */}
+        <Card className="border-amber-200 bg-amber-50">
+          <CardHeader>
+            <CardTitle className="text-base">Payout Information</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm">
+            <p><strong>Commission:</strong> 30% of each subscription ($9.90/year per referral)</p>
+            <p><strong>Minimum Payout:</strong> $50 USD</p>
+            <p><strong>Frequency:</strong> Manual payouts (monthly or quarterly)</p>
+            <p><strong>Methods:</strong> Bank transfer or Stripe (coming soon)</p>
+            <p className="text-xs text-muted-foreground pt-2">Affiliate earnings are paid manually while we scale. Request payouts anytime you reach the minimum balance.</p>
+          </CardContent>
+        </Card>
+
+        {/* Payout Button */}
+        {(stats?.availableBalance || 0) >= 50 && (
+          <Link href="/payout">
+            <Button className="w-full" size="lg">
+              Request Payout
+            </Button>
+          </Link>
+        )}
+
+        {/* FAQ Link */}
+        <div className="text-center">
+          <p className="text-muted-foreground mb-4">Have questions?</p>
+          <Link href="/faq">
+            <Button variant="outline">View FAQ</Button>
+          </Link>
+        </div>
       </main>
     </div>
   );

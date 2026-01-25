@@ -116,3 +116,15 @@
 - [x] Add NextDNS account connection UI
 - [ ] Integrate email into payment flow
 - [ ] Integrate email into payout flow
+
+
+## $33/Year Launch Prep
+- [x] Update pricing to $33/year across all pages (Home, Subscribe, checkout, FAQ)
+- [x] Remove monthly billing option from Subscribe page
+- [x] Remove gift code system entirely (admin panel, redemption, database)
+- [x] Simplify affiliate dashboard to single screen (earnings counter, referral link, payout status)
+- [x] Update affiliate copy (30% recurring, no cap, simple earnings)
+- [x] Remove multi-tier affiliate logic, keep flat 30% only
+- [ ] Create demo video (16:9 and 9:16 versions) - user will provide
+- [ ] Test all pages with new pricing and copy
+- [ ] Final checkpoint and launch prep

@@ -15,7 +15,7 @@ export default function FAQ() {
       questions: [
         {
           q: "How do I become an affiliate?",
-          a: "Subscribe to NurGuard ($7.77/month), then go to your Affiliate Dashboard. Your referral code is generated automatically."
+          a: "Subscribe to NurGuard ($33/year), then go to your Affiliate Dashboard. Your referral code is generated automatically."
         },
         {
           q: "When can I start earning?",
@@ -27,7 +27,7 @@ export default function FAQ() {
         },
         {
           q: "How much do I earn per referral?",
-          a: "30% of every active referral's subscription, every month. At the current $7.77/month price, that's ~$2.33/month per referral."
+          a: "30% of every active referral's subscription, every year. At the current $33/year price, that's ~$9.90/year per referral."
         },
         {
           q: "Do I keep earning if my referral cancels?",
@@ -35,15 +35,15 @@ export default function FAQ() {
         },
         {
           q: "When do I get paid?",
-          a: "Payouts are processed monthly. Request a payout from your dashboard, and we'll send it within 5-7 business days."
+          a: "Affiliate earnings are paid manually while we scale. Request a payout from your dashboard when you reach $10 minimum."
         },
         {
           q: "What payment methods do you accept?",
-          a: "Bank transfer (ACH), PayPal, and cryptocurrency. Choose your preferred method in the payout settings."
+          a: "Bank transfer (ACH). We process payouts manually to keep things simple and transparent."
         },
         {
           q: "Is there a minimum payout amount?",
-          a: "Yes, $10 minimum. If your balance is below $10, you can request a payout when you reach the threshold."
+          a: "Yes, $10 minimum. Request a payout when you reach the threshold, and we'll process it within 5-7 business days."
         },
         {
           q: "Can I use my referral link on social media?",
@@ -55,44 +55,7 @@ export default function FAQ() {
         }
       ]
     },
-    giftcodes: {
-      title: "Gift Codes",
-      icon: "🎁",
-      questions: [
-        {
-          q: "How do I redeem a gift code?",
-          a: "Go to /redeem-gift-code, enter your code, and click Redeem. Your subscription will activate immediately."
-        },
-        {
-          q: "What if my code doesn't work?",
-          a: "Check that you entered it correctly (codes are case-insensitive). If it still doesn't work, contact support@nurguard.app."
-        },
-        {
-          q: "Can I use a gift code if I already have a subscription?",
-          a: "Yes. The gift code will extend your subscription by the code's duration (usually 1-3 months)."
-        },
-        {
-          q: "How long does the gift code subscription last?",
-          a: "It depends on the code. Most codes are for 1 month, but some may be longer. The duration is shown after you redeem."
-        },
-        {
-          q: "Can I stack multiple gift codes?",
-          a: "Yes. Each code you redeem adds its duration to your subscription."
-        },
-        {
-          q: "Do gift codes include affiliate access?",
-          a: "Yes. Once redeemed, you have full access to the affiliate program immediately."
-        },
-        {
-          q: "Can I transfer my gift code to someone else?",
-          a: "Gift codes are one-time use. Once redeemed by one person, they can't be used again."
-        },
-        {
-          q: "What if my gift code expires?",
-          a: "Gift codes don't expire, but they can only be redeemed once. Use it before someone else does."
-        }
-      ]
-    },
+
     earnings: {
       title: "Earnings & Payouts",
       icon: "💳",

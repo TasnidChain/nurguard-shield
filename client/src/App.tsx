@@ -13,7 +13,6 @@ import Blocking from "./pages/Blocking";
 import Affiliate from "./pages/Affiliate";
 import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
-import RedeemGiftCode from "./pages/RedeemGiftCode";
 import AffiliatePublic from "./pages/AffiliatePublic";
 import OverflowEconomy from "./pages/OverflowEconomy";
 import VisionPage from "./pages/VisionPage";
@@ -24,7 +23,7 @@ import Terms from "./pages/Terms";
 import RefundPolicy from "./pages/RefundPolicy";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
-import AdminGiftCodes from "./pages/AdminGiftCodes";
+
 import PayoutRequest from "./pages/PayoutRequest";
 import NextDNSConnect from "./pages/NextDNSConnect";
 import SetupDNS from "./pages/SetupDNS";
@@ -65,7 +64,6 @@ function Router() {
       <Route path="/blocking" component={Blocking} />
       <Route path="/affiliate" component={Affiliate} />
       <Route path="/settings" component={Settings} />
-      <Route path="/redeem" component={RedeemGiftCode} />
       <Route path="/download" component={Download} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
       <Route path="/setup-dns" component={SetupDNS} />
@@ -77,7 +75,6 @@ function Router() {
       <Route path="/refund-policy" component={RefundPolicy} />
       <Route path="/contact" component={Contact} />
       <Route path="/faq" component={FAQ} />
-      <Route path="/admin/gift-codes" component={AdminGiftCodes} />
       <Route path="/payout" component={PayoutRequest} />
       <Route path="/nextdns-connect" component={NextDNSConnect} />
       <Route path="/404" component={NotFound} />
