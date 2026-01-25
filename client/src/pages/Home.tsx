@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Shield, Lock, Users, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight, Pause, Shield, Clock, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -11,20 +11,21 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="container max-w-4xl mx-auto px-4 py-20 text-center space-y-8">
+      <section className="container max-w-4xl mx-auto px-4 py-24 text-center space-y-8">
         <div className="space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-            Guard Your Nūr Online
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight">
+            A pause between impulse and action
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto">
-            A digital guardian that blocks harmful content, protects your privacy, and helps you use technology with discipline and intention.
+            NurGuard gently interrupts distractions — so you can choose on purpose.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Link href="/pricing">
-            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
-              👉 Activate Protection — $33 / Year
+            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
+              Get NurGuard — $33/year
+              <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </Link>
           <Link href="/how-it-works">
@@ -40,18 +41,87 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What NurGuard Does */}
+      {/* What Actually Happens */}
+      <section className="container max-w-4xl mx-auto px-4 py-20">
+        <h2 className="text-4xl font-bold text-center text-white mb-16">What actually happens</h2>
+        
+        <div className="space-y-8">
+          <div className="flex gap-6 items-start">
+            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+              1
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">You open Instagram.</h3>
+              <p className="text-slate-300 text-lg">Just like always.</p>
+            </div>
+          </div>
+
+          <div className="flex gap-6 items-start">
+            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+              2
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">NurGuard pauses you for a moment.</h3>
+              <p className="text-slate-300 text-lg">Before the scroll begins.</p>
+            </div>
+          </div>
+
+          <div className="flex gap-6 items-start">
+            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+              3
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">A simple question appears.</h3>
+              <p className="text-slate-300 text-lg">"What's your intention right now?"</p>
+            </div>
+          </div>
+
+          <div className="flex gap-6 items-start">
+            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+              4
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">You choose — or you walk away.</h3>
+              <p className="text-slate-300 text-lg">That pause changes everything.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Message */}
+      <section className="container max-w-4xl mx-auto px-4 py-20 text-center">
+        <Card className="bg-emerald-950/30 border-emerald-700/30 p-12">
+          <p className="text-2xl font-semibold text-emerald-300">
+            NurGuard doesn't fight you.<br />
+            It gives you a moment to choose.
+          </p>
+        </Card>
+      </section>
+
+      {/* Features - Concrete */}
       <section className="container max-w-5xl mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center text-white mb-16">A Digital Shield for Modern Life</h2>
+        <h2 className="text-4xl font-bold text-center text-white mb-16">How it works</h2>
         
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="bg-slate-800 border-slate-700">
             <CardContent className="pt-8 space-y-4">
               <div className="flex items-start gap-4">
+                <Pause className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
+                <div className="text-left">
+                  <h3 className="text-xl font-bold text-white mb-2">Pause distractions before they open</h3>
+                  <p className="text-slate-300">Not after. Not with guilt. Just a moment to choose.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="pt-8 space-y-4">
+              <div className="flex items-start gap-4">
                 <Shield className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
                 <div className="text-left">
-                  <h3 className="text-xl font-bold text-white mb-2">Block Harmful Content</h3>
-                  <p className="text-slate-300">Pornography, gambling, scams, trackers, and malicious sites—blocked at the network level.</p>
+                  <h3 className="text-xl font-bold text-white mb-2">Block adult & gambling websites</h3>
+                  <p className="text-slate-300">Quietly, in the background. Across all your devices.</p>
                 </div>
               </div>
             </CardContent>
@@ -60,10 +130,10 @@ export default function Home() {
           <Card className="bg-slate-800 border-slate-700">
             <CardContent className="pt-8 space-y-4">
               <div className="flex items-start gap-4">
-                <Users className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
+                <Clock className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
                 <div className="text-left">
-                  <h3 className="text-xl font-bold text-white mb-2">Reclaim Your Focus</h3>
-                  <p className="text-slate-300">Reduce addictive scrolling and dopamine traps before they take over your time.</p>
+                  <h3 className="text-xl font-bold text-white mb-2">Set focus hours & time limits</h3>
+                  <p className="text-slate-300">So your phone works with your life — not against it.</p>
                 </div>
               </div>
             </CardContent>
@@ -72,22 +142,10 @@ export default function Home() {
           <Card className="bg-slate-800 border-slate-700">
             <CardContent className="pt-8 space-y-4">
               <div className="flex items-start gap-4">
-                <Lock className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
+                <BarChart3 className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
                 <div className="text-left">
-                  <h3 className="text-xl font-bold text-white mb-2">Protect Your Privacy</h3>
-                  <p className="text-slate-300">Encrypted DNS. No tracking. Your data stays yours.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-slate-800 border-slate-700">
-            <CardContent className="pt-8 space-y-4">
-              <div className="flex items-start gap-4">
-                <CheckCircle2 className="h-8 w-8 text-emerald-500 flex-shrink-0 mt-1" />
-                <div className="text-left">
-                  <h3 className="text-xl font-bold text-white mb-2">Family Safe by Default</h3>
-                  <p className="text-slate-300">Protect children's devices with safe search and content controls.</p>
+                  <h3 className="text-xl font-bold text-white mb-2">Daily accountability</h3>
+                  <p className="text-slate-300">No streaks. No shame. Just awareness of what you're choosing.</p>
                 </div>
               </div>
             </CardContent>
@@ -95,117 +153,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Summary */}
-      <section className="container max-w-4xl mx-auto px-4 py-20 text-center space-y-12">
-        <div>
-          <h2 className="text-4xl font-bold text-white mb-4">Simple. Silent. Always On.</h2>
-          <p className="text-xl text-slate-300 mb-8">No apps spying on you. No filters chasing clicks. Just quiet protection in the background.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold mx-auto">1</div>
-            <h3 className="text-lg font-bold text-white">Install NurGuard</h3>
-            <p className="text-slate-300 text-sm">Install on your device in minutes</p>
-          </div>
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold mx-auto">2</div>
-            <h3 className="text-lg font-bold text-white">Enable Protection</h3>
-            <p className="text-slate-300 text-sm">Turn on DNS protection</p>
-          </div>
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold mx-auto">3</div>
-            <h3 className="text-lg font-bold text-white">Stay Protected</h3>
-            <p className="text-slate-300 text-sm">Harmful content is blocked automatically</p>
-          </div>
-        </div>
-
-        <Link href="/how-it-works">
-          <Button size="lg" variant="outline" className="border-emerald-600 text-emerald-400 hover:bg-emerald-950">
-            See How It Works <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="container max-w-2xl mx-auto px-4 py-20 text-center space-y-8">
-        <div>
-          <h2 className="text-4xl font-bold text-white mb-2">One Price. One Mission.</h2>
-          <p className="text-slate-300">$33 per year</p>
-        </div>
-
-        <Card className="bg-emerald-950 border-emerald-700">
-          <CardContent className="pt-8 space-y-6">
-            <ul className="space-y-3 text-left">
-              <li className="flex items-center gap-3 text-slate-200">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                Covers all your devices
-              </li>
-              <li className="flex items-center gap-3 text-slate-200">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                No monthly billing
-              </li>
-              <li className="flex items-center gap-3 text-slate-200">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                Cancel anytime
-              </li>
-            </ul>
-            
-            <Link href="/pricing" className="block">
-              <Button size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
-                👉 Get Protected Now
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Affiliate Section */}
-      <section className="container max-w-2xl mx-auto px-4 py-20 text-center space-y-8 bg-slate-800 rounded-lg p-8">
-        <div>
-          <h2 className="text-3xl font-bold text-white mb-4">Protect Others. Earn Halal Income.</h2>
-          <ul className="space-y-2 text-slate-300 mb-6">
-            <li>• Earn 30% recurring for every active referral</li>
-            <li>• Share NurGuard with family and friends</li>
-            <li>• Get paid while helping others guard their digital life</li>
-          </ul>
-          <p className="text-slate-400 text-sm mb-6">No ads. Just people helping people.</p>
-        </div>
-
-        <Link href="/earn">
-          <Button size="lg" variant="outline" className="border-emerald-600 text-emerald-400 hover:bg-emerald-950">
-            Learn How to Earn <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-      </section>
-
-      {/* Trust Section */}
-      <section className="container max-w-2xl mx-auto px-4 py-20 text-center space-y-8">
-        <div>
-          <h2 className="text-3xl font-bold text-white mb-4">Built With Niyyah</h2>
-          <ul className="space-y-3 text-slate-300">
-            <li>• 20% of revenue supports masjid construction & maintenance</li>
-            <li>• No venture capital pressure</li>
-            <li>• No selling user data—ever</li>
-          </ul>
-          <p className="text-slate-400 text-sm mt-6">NurGuard is built as a community protection system, not a surveillance business.</p>
-        </div>
-      </section>
-
-      {/* Final CTA */}
+      {/* Pricing Preview */}
       <section className="container max-w-2xl mx-auto px-4 py-20 text-center space-y-8">
         <div className="space-y-4">
-          <h2 className="text-4xl font-bold text-white">Your Devices Don't Need More Apps</h2>
-          <p className="text-2xl text-emerald-400">They Need a Guardian.</p>
+          <p className="text-slate-400 text-sm font-medium">PRICING</p>
+          <h2 className="text-5xl font-bold text-white">$33 / year</h2>
+          <p className="text-slate-300 text-lg">
+            One price. No upsells. No tracking. No tricks.
+          </p>
         </div>
 
         <Link href="/pricing">
-          <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg px-8">
-            👉 Activate NurGuard — $33 / Year
+          <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
+            See what's included
+            <ArrowRight className="h-4 w-4 ml-2" />
           </Button>
         </Link>
+      </section>
 
-        <p className="text-slate-400 text-sm">Instant access • Secure checkout • Support within 24 hours</p>
+      {/* CTA Section */}
+      <section className="container max-w-4xl mx-auto px-4 py-20 text-center space-y-8">
+        <Card className="bg-gradient-to-r from-emerald-950 to-slate-800 border-emerald-700 p-12">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold text-white">Ready to reclaim your focus?</h2>
+            <p className="text-xl text-slate-300">
+              Join others who are choosing intention over impulse.
+            </p>
+            <Link href="/pricing">
+              <Button size="lg" className="bg-white hover:bg-slate-100 text-emerald-950 font-semibold">
+                Get Started — $33/year
+              </Button>
+            </Link>
+          </div>
+        </Card>
       </section>
 
       <Footer />
