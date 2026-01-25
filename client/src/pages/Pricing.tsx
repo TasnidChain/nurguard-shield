@@ -80,7 +80,7 @@ export default function Pricing() {
               {/* CTA */}
               <div className="flex gap-4 justify-center">
                 <a
-                  href="https://nurguard.lemonsqueezy.com/checkout/buy/d1e8f7c3-7a9e-4e5c-8f9e-1a2b3c4d5e6f"
+                  href="https://nurguard.lemonsqueezy.com/checkout/buy/1da7b958-9b59-4e9a-b9cf-0c4214f2e36a"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"
@@ -213,7 +213,7 @@ export default function Pricing() {
             Join others who are choosing intention over impulse.
           </p>
           <a
-            href="https://nurguard.lemonsqueezy.com/checkout/buy/d1e8f7c3-7a9e-4e5c-8f9e-1a2b3c4d5e6f"
+            href="https://nurguard.lemonsqueezy.com/checkout/buy/1da7b958-9b59-4e9a-b9cf-0c4214f2e36a"
             target="_blank"
             rel="noopener noreferrer"
           >

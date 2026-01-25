@@ -170,3 +170,9 @@
 - [x] Add app-level time limits feature (like ScreenZen) to Android app
 - [x] Add notification blocking during time limits
 - [ ] Test time limit enforcement on Android
+
+## Lemon Squeezy Integration (Jan 25, 2026)
+
+- [x] Wire variant ID 1224484 and product ID 776876 into checkout button
+- [x] Test checkout flow end-to-end
+- [ ] Verify webhook receives subscription events (requires real purchase)
