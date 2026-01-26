@@ -335,6 +335,94 @@ export const mobileRouter = router({
       }),
 
     /**
+     * Get User Preferences (Cooldown, etc.)
+     */
+    getPreferences: publicProcedure
+      .input(z.object({ userId: z.number() }))
+      .query(async ({ input }) => {
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database not available");
+
+          const prefs = await db
+            .select()
+            .from(schema.userPreferences)
+            .where(eq(schema.userPreferences.userId, input.userId))
+            .limit(1);
+
+          if (!prefs || prefs.length === 0) {
+            // Return defaults
+            return {
+              cooldownSeconds: 7,
+              lastSyncedAt: null,
+            };
+          }
+
+          return {
+            cooldownSeconds: prefs[0].cooldownSeconds,
+            lastSyncedAt: prefs[0].updatedAt?.toISOString(),
+          };
+        } catch (error) {
+          console.error("Preferences fetch error:", error);
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to fetch preferences",
+          });
+        }
+      }),
+
+    /**
+     * Update User Preferences
+     */
+    updatePreferences: publicProcedure
+      .input(
+        z.object({
+          userId: z.number(),
+          cooldownSeconds: z.number().min(3).max(60),
+        })
+      )
+      .mutation(async ({ input }) => {
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database not available");
+
+          // Check if preferences exist
+          const existing = await db
+            .select()
+            .from(schema.userPreferences)
+            .where(eq(schema.userPreferences.userId, input.userId))
+            .limit(1);
+
+          if (existing.length > 0) {
+            // Update existing
+            await db
+              .update(schema.userPreferences)
+              .set({
+                cooldownSeconds: input.cooldownSeconds,
+                updatedAt: new Date(),
+              })
+              .where(eq(schema.userPreferences.userId, input.userId));
+          } else {
+            // Create new
+            await db.insert(schema.userPreferences).values({
+              id: generateId(),
+              userId: input.userId,
+              cooldownSeconds: input.cooldownSeconds,
+              updatedAt: new Date(),
+            });
+          }
+
+          return { ok: true };
+        } catch (error) {
+          console.error("Preferences update error:", error);
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to update preferences",
+          });
+        }
+      }),
+
+    /**
      * Update Time Budget
      */
     updateTimeBudget: publicProcedure

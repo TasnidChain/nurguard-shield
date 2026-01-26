@@ -22,29 +22,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nurguard.shield.ui.theme.NurGuardTheme
+import androidx.lifecycle.lifecycleScope
+import com.nurguard.shield.data.local.AppDatabase
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class NiyyahGateActivity : ComponentActivity() {
 
     private var blockedPackage: String = ""
     private var isTimeLimitExceeded: Boolean = false
     private var cooldownSeconds: Int = 7
+    private lateinit var database: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
+        database = AppDatabase.getInstance(applicationContext)
         blockedPackage = intent.getStringExtra("blocked_package") ?: ""
         isTimeLimitExceeded = intent.getBooleanExtra("time_limit_exceeded", false)
         
-        // Determine cooldown based on app
-        cooldownSeconds = when {
-            isTimeLimitExceeded -> 15 // Longer cooldown for time limit exceeded
-            blockedPackage.contains("instagram") -> 7
-            blockedPackage.contains("tiktok") || blockedPackage.contains("musically") -> 15
-            blockedPackage.contains("twitter") -> 7
-            blockedPackage.contains("youtube") -> 7
-            else -> 7
-        }
+        // Load user's custom cooldown preference
+        loadCooldownPreference()
 
         setContent {
             NurGuardTheme {
@@ -55,6 +53,18 @@ class NiyyahGateActivity : ComponentActivity() {
                     onContinue = { handleContinue() },
                     onWalkAway = { handleWalkAway() }
                 )
+            }
+        }
+    }
+
+    private fun loadCooldownPreference() {
+        lifecycleScope.launch {
+            val prefs = database.userPreferencesDao().getPreferencesOnce()
+            cooldownSeconds = prefs?.cooldownSeconds ?: 7
+            
+            // Apply multiplier for time limit exceeded
+            if (isTimeLimitExceeded) {
+                cooldownSeconds = (cooldownSeconds * 2).coerceAtMost(60)
             }
         }
     }

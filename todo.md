@@ -192,3 +192,12 @@
 - [x] Set up local Room database
 - [x] Set up GitHub Actions for APK build
 - [ ] Test APK on real device
+
+## Cooldown Customization Feature (Jan 26, 2026)
+
+- [x] Add user preferences table to database schema
+- [x] Create DataStore for storing cooldown preference locally
+- [x] Build cooldown settings UI with preset options (3s, 7s, 15s, 33s, 60s)
+- [x] Update Niyyah Gate to read custom cooldown from preferences
+- [x] Update backend API to sync cooldown across devices
+- [ ] Test cooldown customization flow on real device

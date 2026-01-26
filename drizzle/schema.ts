@@ -330,3 +330,14 @@ export const deviceOverrides = mysqlTable("device_overrides", {
 
 export type DeviceOverride = typeof deviceOverrides.$inferSelect;
 export type InsertDeviceOverride = typeof deviceOverrides.$inferInsert;
+
+// User preferences table - Cooldown timer and other user-specific settings
+export const userPreferences = mysqlTable("user_preferences", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull().unique(),
+  cooldownSeconds: int("cooldownSeconds").default(7).notNull(), // Default 7 seconds
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UserPreference = typeof userPreferences.$inferSelect;
+export type InsertUserPreference = typeof userPreferences.$inferInsert;

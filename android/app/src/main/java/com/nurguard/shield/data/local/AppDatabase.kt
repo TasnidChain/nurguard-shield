@@ -13,9 +13,10 @@ import androidx.room.TypeConverters
         SacredHour::class,
         Ruleset::class,
         RulesetItem::class,
-        DailyUsage::class
+        DailyUsage::class,
+        UserPreferences::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -26,6 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun sacredHourDao(): SacredHourDao
     abstract fun rulesetDao(): RulesetDao
     abstract fun dailyUsageDao(): DailyUsageDao
+    abstract fun userPreferencesDao(): UserPreferencesDao
 
     companion object {
         @Volatile

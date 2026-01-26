@@ -66,7 +66,7 @@ fun NurGuardApp() {
             }
             
             composable("settings") {
-                SettingsScreen(
+                SettingsScreenEnhanced(
                     onNavigateBack = { navController.popBackStack() }
                 )
             }
