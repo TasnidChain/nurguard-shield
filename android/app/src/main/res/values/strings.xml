@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NurGuard</string>
+    <string name="accessibility_service_description">NurGuard uses this service to detect when you open blocked apps and show the Niyyah Gate prompt. This helps you pause between impulse and action.</string>
+    <string name="vpn_service_description">NurGuard uses a local VPN to filter harmful websites. Your data never leaves your device.</string>
+    
+    <!-- Niyyah Gate -->
+    <string name="niyyah_gate_title">What\'s your intention?</string>
+    <string name="niyyah_gate_subtitle">Take a moment to reflect before continuing</string>
+    <string name="niyyah_gate_continue">Continue with intention</string>
+    <string name="niyyah_gate_cancel">Walk away</string>
+    
+    <!-- Setup -->
+    <string name="setup_welcome_title">Welcome to NurGuard</string>
+    <string name="setup_welcome_subtitle">A pause between impulse and action</string>
+    <string name="setup_permissions_title">Grant Permissions</string>
+    <string name="setup_permissions_subtitle">NurGuard needs these to protect you</string>
+    <string name="setup_accessibility_title">Accessibility Service</string>
+    <string name="setup_accessibility_description">Detects blocked apps and shows Niyyah Gate</string>
+    <string name="setup_vpn_title">VPN Service</string>
+    <string name="setup_vpn_description">Filters harmful websites locally on your device</string>
+    <string name="setup_usage_title">Usage Access</string>
+    <string name="setup_usage_description">Tracks screen time for daily reports</string>
+    <string name="setup_overlay_title">Display Over Apps</string>
+    <string name="setup_overlay_description">Shows Niyyah Gate prompt over blocked apps</string>
+    
+    <!-- Home -->
+    <string name="home_protection_active">Protection Active</string>
+    <string name="home_protection_inactive">Protection Inactive</string>
+    <string name="home_blocked_today">Blocked Today</string>
+    <string name="home_screen_time">Screen Time</string>
+    <string name="home_compliance_score">Compliance</string>
+    
+    <!-- Sacred Hours -->
+    <string name="sacred_hours_title">Sacred Hours</string>
+    <string name="sacred_hours_subtitle">Block distractions during prayer times and focus periods</string>
+    <string name="sacred_hours_fajr">Fajr</string>
+    <string name="sacred_hours_dhuhr">Dhuhr</string>
+    <string name="sacred_hours_asr">Asr</string>
+    <string name="sacred_hours_maghrib">Maghrib</string>
+    <string name="sacred_hours_isha">Isha</string>
+    
+    <!-- Daily Report -->
+    <string name="daily_report_title">Daily Report</string>
+    <string name="daily_report_subtitle">Your accountability mirror</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_blocking">Blocking Rules</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about">About</string>
+    <string name="settings_logout">Logout</string>
+</resources>

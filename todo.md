@@ -176,3 +176,19 @@
 - [x] Wire variant ID 1224484 and product ID 776876 into checkout button
 - [x] Test checkout flow end-to-end
 - [ ] Verify webhook receives subscription events (requires real purchase)
+
+## Android App Development (Jan 25, 2026)
+
+- [x] Create Android project structure with Gradle
+- [x] Build Accessibility Service for app blocking
+- [x] Build VPN Service for DNS filtering
+- [x] Implement Niyyah Gate overlay UI
+- [x] Implement time limit enforcement
+- [x] Build Home screen UI
+- [x] Build Setup/onboarding flow
+- [x] Build Sacred Hours configuration
+- [x] Build Daily Report screen
+- [x] Integrate backend API client (Retrofit)
+- [x] Set up local Room database
+- [x] Set up GitHub Actions for APK build
+- [ ] Test APK on real device
