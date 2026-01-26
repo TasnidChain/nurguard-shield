@@ -70,6 +70,18 @@ fun NurGuardApp() {
                     onNavigateBack = { navController.popBackStack() }
                 )
             }
+            
+            composable("heatmap") {
+                UsageHeatmapScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
+            
+            composable("panic") {
+                PanicModeScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
         }
     }
 }

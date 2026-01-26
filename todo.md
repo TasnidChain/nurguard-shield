@@ -201,3 +201,13 @@
 - [x] Update Niyyah Gate to read custom cooldown from preferences
 - [x] Update backend API to sync cooldown across devices
 - [ ] Test cooldown customization flow on real device
+
+## Advanced Features Batch (Jan 26, 2026)
+
+- [x] Per-app cooldown overrides (custom cooldown for each blocked app)
+- [x] Motivational quotes system (show Islamic quotes during cooldown)
+- [x] Daily bypass limit (3 bypasses per day, then forced cooldown)
+- [x] App usage heatmap (calendar visualization of blocked app usage)
+- [x] Emergency panic mode (one-tap button to block ALL apps for 1 hour)
+- [ ] Push all changes to GitHub
+- [ ] Create GitHub release with APK

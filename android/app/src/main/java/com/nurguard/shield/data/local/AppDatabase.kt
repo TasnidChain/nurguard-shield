@@ -14,9 +14,12 @@ import androidx.room.TypeConverters
         Ruleset::class,
         RulesetItem::class,
         DailyUsage::class,
-        UserPreferences::class
+        UserPreferences::class,
+        AppCooldownOverride::class,
+        DailyBypass::class,
+        PanicModeSession::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -28,6 +31,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun rulesetDao(): RulesetDao
     abstract fun dailyUsageDao(): DailyUsageDao
     abstract fun userPreferencesDao(): UserPreferencesDao
+    abstract fun appCooldownOverrideDao(): AppCooldownOverrideDao
+    abstract fun dailyBypassDao(): DailyBypassDao
+    abstract fun panicModeDao(): PanicModeDao
 
     companion object {
         @Volatile

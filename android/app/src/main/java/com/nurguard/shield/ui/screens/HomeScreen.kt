@@ -158,6 +158,24 @@ fun HomeScreen(
                 icon = Icons.Default.Timer,
                 onClick = { /* Navigate to time limits */ }
             )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            ActionCard(
+                title = "Usage Heatmap",
+                description = "See your accountability mirror",
+                icon = Icons.Default.CalendarToday,
+                onClick = { /* Navigate to heatmap */ }
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            ActionCard(
+                title = "Emergency Panic Mode",
+                description = "Instant lockdown for moments of weakness",
+                icon = Icons.Default.Warning,
+                onClick = { /* Navigate to panic mode */ }
+            )
         }
     }
 }

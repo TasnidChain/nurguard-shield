@@ -341,3 +341,44 @@ export const userPreferences = mysqlTable("user_preferences", {
 
 export type UserPreference = typeof userPreferences.$inferSelect;
 export type InsertUserPreference = typeof userPreferences.$inferInsert;
+
+// App cooldown overrides table - Per-app custom cooldown durations
+export const appCooldownOverrides = mysqlTable("app_cooldown_overrides", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  packageName: varchar("packageName", { length: 128 }).notNull(),
+  appName: varchar("appName", { length: 128 }).notNull(),
+  cooldownSeconds: int("cooldownSeconds").notNull(), // Custom cooldown for this app
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AppCooldownOverride = typeof appCooldownOverrides.$inferSelect;
+export type InsertAppCooldownOverride = typeof appCooldownOverrides.$inferInsert;
+
+// Daily bypass tracking table - Track how many times user bypassed cooldown today
+export const dailyBypasses = mysqlTable("daily_bypasses", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  date: varchar("date", { length: 10 }).notNull(), // YYYY-MM-DD
+  bypassCount: int("bypassCount").default(0).notNull(),
+  bypassLimit: int("bypassLimit").default(3).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type DailyBypass = typeof dailyBypasses.$inferSelect;
+export type InsertDailyBypass = typeof dailyBypasses.$inferInsert;
+
+// Panic mode sessions table - Track emergency lockdown sessions
+export const panicModeSessions = mysqlTable("panic_mode_sessions", {
+  id: varchar("id", { length: 26 }).primaryKey(), // ULID
+  userId: int("userId").notNull(),
+  deviceId: varchar("deviceId", { length: 26 }),
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  endsAt: timestamp("endsAt").notNull(),
+  isActive: boolean("isActive").default(true).notNull(),
+  reason: varchar("reason", { length: 255 }), // Optional: why user activated panic mode
+});
+
+export type PanicModeSession = typeof panicModeSessions.$inferSelect;
+export type InsertPanicModeSession = typeof panicModeSessions.$inferInsert;
