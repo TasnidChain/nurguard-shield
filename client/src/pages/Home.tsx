@@ -113,6 +113,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Cinematic Feature Showcase */}
+      <section className="py-0">
+        {[
+          {
+            image: "/hero-1-guard-attention.jpg",
+            title: "Guard your attention.",
+            subtitle: "Digital protection for a focused life.",
+          },
+          {
+            image: "/hero-2-not-everything.jpg",
+            title: "Not everything",
+            subtitle: "online is meant for you.",
+          },
+          {
+            image: "/hero-3-network-blocking.jpg",
+            title: "NurGuard blocks harmful",
+            subtitle: "content at the network level.",
+          },
+          {
+            image: "/hero-4-background.jpg",
+            title: "Once it's set up,",
+            subtitle: "it works quietly in the background.",
+          },
+          {
+            image: "/hero-5-control.jpg",
+            title: "No ads. No tracking.",
+            subtitle: "Full control.",
+          },
+        ].map((section, idx) => (
+          <div
+            key={idx}
+            className="relative h-screen w-full flex items-center justify-start"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(${section.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="container max-w-6xl mx-auto px-4">
+              <div className="max-w-xl space-y-2">
+                <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  {section.title}
+                </h2>
+                <p className="text-2xl lg:text-3xl text-gray-200">
+                  {section.subtitle}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
       {/* Features - Better Hierarchy */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="container max-w-6xl mx-auto">

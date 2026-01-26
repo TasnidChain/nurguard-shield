@@ -225,3 +225,9 @@
 - [x] Update AndroidManifest with new icon
 - [ ] Export code to GitHub repository
 - [ ] Set up GitHub Actions for APK builds
+
+## Hero Images for Homepage (Jan 26, 2026)
+
+- [x] Generate 5 cinematic hero images
+- [x] Create scrolling showcase section on homepage
+- [x] Replace video placeholder with image sections
