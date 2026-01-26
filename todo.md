@@ -211,3 +211,9 @@
 - [x] Emergency panic mode (one-tap button to block ALL apps for 1 hour)
 - [ ] Push all changes to GitHub
 - [ ] Create GitHub release with APK
+
+## Niyyah Gate Enhancements (Jan 26, 2026)
+
+- [x] Add WorkManager background sync for cooldown preferences
+- [x] Add toast feedback when cooldown is saved
+- [ ] Test background sync functionality

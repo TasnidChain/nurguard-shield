@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import android.widget.Toast
 import androidx.compose.ui.unit.dp
 import com.nurguard.shield.data.local.AppDatabase
 import com.nurguard.shield.data.local.UserPreferences
@@ -197,6 +198,16 @@ fun SettingsScreenEnhanced(onNavigateBack: () -> Unit) {
                     preferencesDao.updateCooldown(newCooldown)
                     currentCooldown = newCooldown
                     showCooldownDialog = false
+                    
+                    // Show success toast
+                    Toast.makeText(
+                        context,
+                        "Cooldown updated to $newCooldown seconds",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    
+                    // Trigger immediate sync to backend
+                    com.nurguard.shield.workers.PreferencesSyncWorker.syncNow(context)
                 }
             }
         )
