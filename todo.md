@@ -235,3 +235,11 @@
 ## Pricing CTA on Hero Section (Jan 26, 2026)
 
 - [x] Add pricing and Get Started button to final hero image
+
+## Security Hardening (Jan 27, 2026)
+
+- [x] Add security headers middleware (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy)
+- [x] Implement Content Security Policy (CSP)
+- [x] Upgrade HSTS to include preload directive
+- [x] Create security.txt file in .well-known directory
+- [x] Test all security headers

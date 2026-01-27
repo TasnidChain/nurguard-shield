@@ -31,6 +31,41 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  
+  // Security headers middleware
+  app.use((req, res, next) => {
+    // Prevent MIME type sniffing
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    
+    // Prevent clickjacking
+    res.setHeader('X-Frame-Options', 'DENY');
+    
+    // Referrer policy
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    // Permissions policy (disable camera, microphone, geolocation)
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    
+    // Cross-Origin-Opener-Policy
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    
+    // HSTS with preload
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+    
+    // Content Security Policy
+    res.setHeader(
+      'Content-Security-Policy',
+      "default-src 'self'; " +
+      "img-src 'self' https: data:; " +
+      "script-src 'self' https:; " +
+      "style-src 'self' 'unsafe-inline' https:; " +
+      "connect-src 'self' https:; " +
+      "frame-ancestors 'none';"
+    );
+    
+    next();
+  });
+  
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));

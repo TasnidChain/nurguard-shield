@@ -1,0 +1,5 @@
+Contact: mailto:security@nurguard.com
+Expires: 2026-12-31T23:59:59Z
+Preferred-Languages: en
+Policy: https://nurguard.com/security
+Acknowledgments: https://nurguard.com/security#acknowledgments
