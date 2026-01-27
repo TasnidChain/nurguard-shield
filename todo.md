@@ -231,3 +231,7 @@
 - [x] Generate 5 cinematic hero images
 - [x] Create scrolling showcase section on homepage
 - [x] Replace video placeholder with image sections
+
+## Pricing CTA on Hero Section (Jan 26, 2026)
+
+- [x] Add pricing and Get Started button to final hero image

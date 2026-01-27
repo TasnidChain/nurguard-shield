@@ -140,6 +140,7 @@ export default function Home() {
             image: "/hero-5-control.jpg",
             title: "No ads. No tracking.",
             subtitle: "Full control.",
+            showCTA: true,
           },
         ].map((section, idx) => (
           <div
@@ -152,13 +153,25 @@ export default function Home() {
             }}
           >
             <div className="container max-w-6xl mx-auto px-4">
-              <div className="max-w-xl space-y-2">
-                <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-                  {section.title}
-                </h2>
-                <p className="text-2xl lg:text-3xl text-gray-200">
-                  {section.subtitle}
-                </p>
+              <div className="max-w-xl space-y-6">
+                <div className="space-y-2">
+                  <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    {section.title}
+                  </h2>
+                  <p className="text-2xl lg:text-3xl text-gray-200">
+                    {section.subtitle}
+                  </p>
+                </div>
+                {section.showCTA && (
+                  <div className="pt-4">
+                    <Link href="/pricing">
+                      <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg hover:shadow-emerald-500/50 transition-all hover:scale-105">
+                        Get Started — $33/year
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
