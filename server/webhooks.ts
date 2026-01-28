@@ -1,7 +1,9 @@
 import { Express } from "express";
 import { getDb } from "./db";
-import { users } from "../drizzle/schema";
+import { users, entitlements } from "../drizzle/schema";
+import { eq } from "drizzle-orm";
 import crypto from "crypto";
+import { ulid } from "ulid";
 
 export function registerWebhooks(app: Express) {
   // Lemon Squeezy webhook handler
@@ -22,30 +24,58 @@ export function registerWebhooks(app: Express) {
       const event = data.meta?.event_name;
       const order = data.data?.attributes;
 
-      if (event === "order.created" && order?.status === "paid") {
-        const email = order.customer_email;
+      if (event === "order_created" && order?.status === "paid") {
+        const email = order.user_email;
         const db = await getDb();
 
         if (db && email) {
-          // Create subscription that expires in 30 days
+          // Create subscription that expires in 1 year
           const endsAt = new Date();
-          endsAt.setMonth(endsAt.getMonth() + 1);
+          endsAt.setFullYear(endsAt.getFullYear() + 1);
 
           // Insert or update user
-          await db.insert(users).values({
+          const result = await db.insert(users).values({
             openId: email,
             email,
-            name: order.customer_name || "User",
+            name: order.user_name || "User",
             subscriptionStatus: "active",
             subscriptionId: data.data?.id?.toString(),
+            lemonSqueezyCustomerId: order.customer_id?.toString(),
             subscriptionEndsAt: endsAt,
           }).onDuplicateKeyUpdate({
             set: {
               subscriptionStatus: "active",
               subscriptionId: data.data?.id?.toString(),
+              lemonSqueezyCustomerId: order.customer_id?.toString(),
               subscriptionEndsAt: endsAt,
             },
           });
+
+          // Get user ID (either from insert or from existing user)
+          let userId: number | undefined;
+          if ('insertId' in result && typeof result.insertId === 'number') {
+            userId = result.insertId;
+          } else {
+            const existingUser = await db.select({ id: users.id }).from(users).where(eq(users.openId, email)).limit(1);
+            userId = existingUser[0]?.id;
+          }
+
+          if (userId) {
+            // Create or update entitlement
+            await db.insert(entitlements).values({
+              id: ulid(),
+              userId,
+              status: "active",
+              plan: "nurguard_yearly",
+              currentPeriodEnd: endsAt,
+              source: "lemon",
+            }).onDuplicateKeyUpdate({
+              set: {
+                status: "active",
+                currentPeriodEnd: endsAt,
+              },
+            });
+          }
         }
       }
 

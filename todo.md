@@ -243,3 +243,23 @@
 - [x] Upgrade HSTS to include preload directive
 - [x] Create security.txt file in .well-known directory
 - [x] Test all security headers
+
+## Checkout Success Flow (Jan 27, 2026)
+
+- [x] Create checkout success page with APK download
+- [x] Add setup instructions for Android permissions
+- [x] Add webhook handler to grant entitlements after payment
+- [ ] Test full checkout flow
+- [ ] Configure Lemon Squeezy redirect URL
+
+## iOS App Development (Jan 27, 2026)
+
+- [ ] Create ## iOS App Development (Jan 27, 2026)
+
+- [x] Create iOS project structure with Swift/SwiftUI
+- [x] Build Screen Time API integration
+- [x] Build VPN Network Extension for DNS filtering
+- [x] Create UI screens (Home, Settings, Heatmap, Panic Mode)
+- [x] Integrate backend API client
+- [ ] Set up GitHub Actions for iOS builds
+- [ ] Test on real iPhone device

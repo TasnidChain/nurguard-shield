@@ -40,12 +40,8 @@ export default function CheckoutSuccess() {
   };
 
   const downloadAPK = () => {
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = 'nurguard-shield.apk';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Link to latest GitHub release
+    window.open('https://github.com/TasnidChain/nurguard-shield/releases/latest', '_blank');
   };
 
   return (
@@ -81,6 +77,15 @@ export default function CheckoutSuccess() {
               Download NurGuard for Android
             </Button>
             
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 font-semibold py-6 text-lg"
+              disabled
+            >
+              iOS App (Coming Soon)
+            </Button>
+            
             <p className="text-center text-sm text-slate-400">
               This is the official NurGuard app. Safe to install.
             </p>
@@ -107,7 +112,8 @@ export default function CheckoutSuccess() {
                   2
                 </div>
                 <div>
-                  <p className="text-slate-200">Install it</p>
+                  <p className="text-slate-200 font-medium">Install the APK</p>
+                  <p className="text-sm text-slate-400 mt-1">Enable "Install from Unknown Sources" in Settings → Security if prompted</p>
                 </div>
               </div>
               
@@ -116,7 +122,18 @@ export default function CheckoutSuccess() {
                   3
                 </div>
                 <div>
-                  <p className="text-slate-200">Open NurGuard and follow the prompts</p>
+                  <p className="text-slate-200 font-medium">Enable Accessibility Service</p>
+                  <p className="text-sm text-slate-400 mt-1">Settings → Accessibility → NurGuard Shield → Toggle ON</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold flex-shrink-0 text-sm">
+                  4
+                </div>
+                <div>
+                  <p className="text-slate-200 font-medium">Enable VPN Protection</p>
+                  <p className="text-sm text-slate-400 mt-1">Open NurGuard → Tap "Enable DNS Protection" → Accept VPN request</p>
                 </div>
               </div>
             </div>
